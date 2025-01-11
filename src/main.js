@@ -1,6 +1,11 @@
-import './assets/main.css'
+import './assets/styles/main.scss'
 
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const app = createApp(App);
+
+import vuetify from "@/plugins/vuetify";
+app.use(vuetify);
+
+app.mount('#app')
