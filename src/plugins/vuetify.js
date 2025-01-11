@@ -24,7 +24,7 @@ export default createVuetify({
 					'on-surface-variant': "#FFFFFF",
 					"surface-variant": "#333333",
 					primary: "#62AA7B",
-					secondary: "#288BD3",
+					secondary: "#B3B3B3",
 					success: "#3DB868",
 					error: "#E22C3A"
 				},

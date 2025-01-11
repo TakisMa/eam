@@ -20,7 +20,7 @@ $ihm-pink2: #fdeaec;
 $ihm-white: #ffffff;
 $ihm-blue: #288bd3;
 $ihm-blue--dark: #00c0fa;
-$ihm-blue1: #002193;
+$ihm-blue1: #003475;
 $ihm-blue2: #3c4063;
 $ihm-purple: #3f51b5;
 $ihm-yellow: #f8e71c;
@@ -28,6 +28,7 @@ $ihm-yellow-warning: #f7ce03;
 $ihm-yellow-warning-background: transparentize($ihm-yellow-warning, 0.8);
 $ihm-orange: #fc833e;
 $ihm-orange1: #e86317;
+
 
 // Text
 $grey-600: #27292d;
@@ -45,7 +46,7 @@ $grey-100: #f6f8f9;
 // Background
 $background: $ihm-grey1;
 $background--dark: $grey-500;
-$topbar-background: $grey-600;
+$topbar-background: $ihm-blue1;
 $topbar-background--dark: #000000;
 
 // Live Status
