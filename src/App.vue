@@ -1,5 +1,9 @@
 <template>
 	<v-app>
+		<nav>
+			<RouterLink to="/">Home</RouterLink>
+			<RouterLink to="/search">Search</RouterLink>
+		</nav>
 		<Header/>
 		<Main />
 	</v-app>

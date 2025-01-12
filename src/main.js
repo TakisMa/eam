@@ -8,5 +8,9 @@ const app = createApp(App);
 import vuetify from "@/plugins/vuetify";
 app.use(vuetify);
 
+/* App use Router */
+import router from "@/plugins/router"
+app.use(router);
+
 /* Mount App */
 app.mount('#app')

@@ -1,9 +1,7 @@
 <template>
 	<v-container>
 		<v-row class="my-4">
-			<h2>
-				Για τους κηδεμόνες
-			</h2>
+			<h2> Για τους κηδεμόνες </h2>
 		</v-row>
 		<v-row>
 			<v-col>
@@ -27,7 +25,6 @@
 						ηλικίας 2 μηνών έως 2.5 ετών
 					</h2>
 				</v-row>
-
 			</v-col>
 			<v-col>
 				<Calendar/>
@@ -37,9 +34,7 @@
 		<v-divider class="my-4" thickness="4"/>
 
 		<v-row class="my-4">
-			<h2>
-				Για τους επαγγελματίες
-			</h2>
+			<h2> Για τους επαγγελματίες </h2>
 		</v-row>
 		<v-row class="d-flex flex-wrap justify-center my-4">
 			<v-col cols="4">
@@ -68,7 +63,7 @@ export default {
 				centralButton: {
 					title: "Είσοδος Κηδεμόνες",
 					icon: "mdi-arrow-right-circle-outline",
-					color: "#009951"
+					color: "#ffa000"
 				},
 				lowerLeftButton: {
 					title: "Λήψη Voucher",

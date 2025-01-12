@@ -2,7 +2,7 @@
 	<v-container>
 		<v-main>
 			<Breadcrumb />
-			<HomePage />
+			<RouterView />
 		</v-main>
 	</v-container>
 </template>

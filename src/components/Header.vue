@@ -1,7 +1,9 @@
 <template>
 	<v-app-bar order="0" height="150" elevation="2">
 		<template v-slot:prepend>
-			<v-img class="logo" width="285" height="150" src="@/assets/images/gov-gr-logo.png" eager/>
+			<v-btn class="d-flex align-center" :ripple="false" @click="toHome">
+				<v-img class="logo" width="285" height="150" src="@/assets/images/gov-gr-logo.png" eager/>
+			</v-btn>
 		</template>
 		<v-spacer/>
 		<v-btn color="secondary">
@@ -22,7 +24,13 @@
 
 <script>
 export default {
-	name: "Header"
+	name: "Header",
+
+	methods: {
+		toHome() {
+			this.$router.push("/");
+		}
+	}
 }
 </script>
 
