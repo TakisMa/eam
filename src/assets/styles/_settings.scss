@@ -1,0 +1,158 @@
+@use "colors";
+
+$font-family: "Open Sans", sans-serif;
+
+@use "vuetify/settings" with (
+  $body-font-family: $font-family,
+  $heading-font-family: $font-family,
+
+  $app-bar-background: colors.$ihm-blue1,
+
+  $border-radius-root: 6px,
+
+  $card-title-padding: 1rem,
+
+  // Buttons
+  $button-border-radius: 8px,
+  $button-font-weight: 600,
+  $button-text-letter-spacing: 0,
+  $button-text-transform: capitalize,
+
+  // Form Fields
+  $field-color: colors.$grey-600,
+  $field-font-size: 12px,
+  $field-control-affixed-padding: 6px,
+
+  // Toolbar
+  $toolbar-title-margin: 0,
+  $toolbar-btn-icon-size: 32px,
+
+  // List
+  $list-item-nav-title-line-height: 1.125rem,
+  $list-item-nav-subtitle-line-height: 1.125rem,
+  $list-item-title-font-size: 0.8125rem,
+
+  // Input
+  $input-font-size: .75rem,
+
+  // Text field
+  $text-field-input-padding-start: 5px,
+  $text-field-details-padding-inline: 0 0,
+  $field-control-padding-start: 8px,
+  $field-control-padding-end: 8px,
+  $field-control-padding-top: 0,
+  $field-control-padding-bottom: 0,
+
+  // Label
+  $label-font-size: 12px,
+
+  // Expansion Panel
+  $expansion-panel-title-padding: 0,
+  $expansion-panel-text-padding: 0,
+  $expansion-panel-active-margin: 0,
+  $expansion-panel-active-title-min-height: 0,
+
+  // Badge
+  $badge-height: 16px,
+  $badge-min-width: 16px,
+  $badge-padding: 2px 4px,
+
+  $list-item-icon-opacity: 1,
+
+  $progress-circular-intermediate-svg-transition: all 0.6s ease-in-out,
+
+  $overlay-scrim-background: colors.$ihm-grey,
+
+  $typography: (
+        (
+                'h1': (
+                        'size': 1.5rem,
+                        'weight': 700,
+                        'line-height': 2rem,
+                        'letter-spacing': 0,
+                        'text-transform': false
+                ),
+                'h2': (
+                        'size': 1.125rem,
+                        'weight': 600,
+                        'line-height': 1.5rem,
+                        'letter-spacing': 0,
+                        'text-transform': false
+                ),
+                'h3': (
+                        'size': 1rem,
+                        'weight': 700,
+                        'line-height': 1.25rem,
+                        'letter-spacing': 0,
+                        'text-transform': false
+                ),
+                'h4': (
+                        'size': 1rem,
+                        'weight': 600,
+                        'line-height': 1.25rem,
+                        'letter-spacing': 0,
+                        'text-transform': false
+                ),
+                'h5': (
+                        'size': .875rem,
+                        'weight': 700,
+                        'line-height': 1rem,
+                        'letter-spacing': 0,
+                        'text-transform': false
+                ),
+                'h6': (
+                        'size': .75rem,
+                        'weight': 700,
+                        'line-height': .875rem,
+                        'letter-spacing': 0,
+                        'text-transform': false
+                ),
+                'body-1': (
+                        'size': 1rem,
+                        'weight': 400,
+                        'line-height': 1.5rem,
+                        'letter-spacing': 0,
+                        'text-transform': false
+                ),
+                'body-2': (
+                        'size': .875rem,
+                        'weight': 400,
+                        'line-height': 1.125rem,
+                        'letter-spacing': 0,
+                        'text-transform': false
+                ),
+                'button': (
+                        'size': .875rem,
+                        'weight': 600,
+                        'line-height': 2.25rem,
+                        'letter-spacing': 0,
+                        'text-transform': uppercase
+                ),
+                'caption': (
+                        'size': .75rem,
+                        'weight': 400,
+                        'line-height': .875rem,
+                        'letter-spacing': 0,
+                        'text-transform': false
+                ),
+                'subtitle-2': (
+                        'size': .75rem,
+                        'weight': 400,
+                        'line-height': .875rem,
+                        'letter-spacing': 0,
+                        'text-transform': false
+                )
+        )
+  ),
+
+  $grid-breakpoints:(
+    (
+      'xs': 0,
+      'sm': 600px,
+      'md': 960px,
+      'lg': 1280px,
+      'xl': 1780px,
+      'xxl': 2560px
+    )
+  )
+);
