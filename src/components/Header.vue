@@ -12,7 +12,7 @@
 		<v-btn color="secondary">
 			Βοήθεια
 		</v-btn>
-		<v-btn color="secondary" @click="toProfile">
+		<v-btn v-if="isLoggedIn" color="secondary" @click="toProfile">
 			Προφίλ
 		</v-btn>
 		<v-btn color="secondary">
@@ -25,6 +25,13 @@
 <script>
 export default {
 	name: "Header",
+
+	computed: {
+		isLoggedIn() {
+			// return this.$store.getters.isLoggedIn();
+			return false;
+		}
+	},
 
 	methods: {
 		toHome() {

@@ -1,7 +1,7 @@
 <template>
 	<div class="d-flex justify-center align-center flex-wrap" >
 		<v-row class="d-flex justify-center">
-			<v-btn
+			<v-btn class="text-black"
 				:append-icon="centralButtonOptions.icon"
 				:text="centralButtonOptions.title"
 				:color="centralButtonOptions.color"

@@ -63,7 +63,7 @@ export default {
 				centralButton: {
 					title: "Είσοδος Κηδεμόνες",
 					icon: "mdi-arrow-right-circle-outline",
-					color: "#ffa000"
+					color: "#3f8747"
 				},
 				lowerLeftButton: {
 					title: "Λήψη Voucher",
