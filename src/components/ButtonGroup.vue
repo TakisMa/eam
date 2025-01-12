@@ -8,15 +8,15 @@
 				width="464" height="165"
 			/>
 		</v-row>
-		<v-row>
-			<v-col class="d-flex justify-space-evenly">
+		<v-row class="d-flex justify-space-evenly">
+			<v-col class="d-flex justify-center">
 				<v-btn
 					:append-icon="lowerLeftButtonOptions.icon"
 					:text="lowerLeftButtonOptions.title"
 					:color="lowerLeftButtonOptions.color"
 				/>
 			</v-col>
-			<v-col class="d-flex justify-space-evenly">
+			<v-col class="d-flex justify-center">
 				<v-btn
 					:append-icon="lowerRightButtonOptions.icon"
 					:text="lowerRightButtonOptions.title"

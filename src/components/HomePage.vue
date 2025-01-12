@@ -1,11 +1,16 @@
 <template>
 	<v-container>
+		<v-row class="my-4">
+			<h2>
+				Για τους κηδεμόνες
+			</h2>
+		</v-row>
 		<v-row>
 			<v-col>
 				<ButtonGroup
-					:central-button-options="buttonOptions.centralButton"
-					:lower-left-button-options="buttonOptions.lowerLeftButton"
-					:lower-right-button-options="buttonOptions.lowerRightButton"
+					:central-button-options="parentButtonOptions.centralButton"
+					:lower-left-button-options="parentButtonOptions.lowerLeftButton"
+					:lower-right-button-options="parentButtonOptions.lowerRightButton"
 				/>
 			</v-col>
 
@@ -24,13 +29,26 @@
 				</v-row>
 
 			</v-col>
-
 			<v-col>
-
+				<Calendar/>
 			</v-col>
 		</v-row>
-		<v-row>
 
+		<v-divider class="my-4" thickness="4"/>
+
+		<v-row class="my-4">
+			<h2>
+				Για τους επαγγελματίες
+			</h2>
+		</v-row>
+		<v-row class="d-flex flex-wrap justify-center my-4">
+			<v-col cols="4">
+				<ButtonGroup
+					:central-button-options="profButtonOptions.centralButton"
+					:lower-left-button-options="profButtonOptions.lowerLeftButton"
+					:lower-right-button-options="profButtonOptions.lowerRightButton"
+				/>
+			</v-col>
 		</v-row>
 	</v-container>
 
@@ -38,14 +56,15 @@
 
 <script>
 import ButtonGroup from "@/components/ButtonGroup.vue";
+import Calendar from "@/components/Calendar.vue";
 
 export default {
 	name: "HomePage",
-	components: {ButtonGroup},
+	components: {Calendar, ButtonGroup},
 
 	data() {
 		return {
-			buttonOptions: {
+			parentButtonOptions: {
 				centralButton: {
 					title: "Είσοδος Κηδεμόνες",
 					icon: "mdi-arrow-right-circle-outline",
@@ -60,6 +79,23 @@ export default {
 					title: "Πληροφορίες Συνοδών",
 					icon: "mdi-help",
 					color: "#CFF7D3"
+				},
+			},
+			profButtonOptions: {
+				centralButton: {
+					title: "Είσοδος Επαγγελματιων",
+					icon: "mdi-arrow-right-circle-outline",
+					color: "#ffa000"
+				},
+				lowerLeftButton: {
+					title: "Δημιουργία Βιογραφικού",
+					icon: "mdi-script-outline",
+					color: "#faefc0"
+				},
+				lowerRightButton: {
+					title: "Πληροφορίες Επαγγελματιών",
+					icon: "mdi-help",
+					color: "#faefc0"
 				},
 			}
 		}
