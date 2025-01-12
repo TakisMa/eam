@@ -12,7 +12,7 @@
 		<v-btn color="secondary">
 			Βοήθεια
 		</v-btn>
-		<v-btn color="secondary">
+		<v-btn color="secondary" @click="toProfile">
 			Προφίλ
 		</v-btn>
 		<v-btn color="secondary">
@@ -29,6 +29,10 @@ export default {
 	methods: {
 		toHome() {
 			this.$router.push("/");
+		},
+
+		toProfile() {
+			this.$router.push("/profile");
 		}
 	}
 }

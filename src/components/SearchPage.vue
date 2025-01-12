@@ -14,7 +14,9 @@
 			<v-row align="center">
 				<v-col cols="1">
 					<v-btn class="d-flex align-center"
-						variant="text" :ripple="false" size="120" rounded="xl">
+						variant="text" :ripple="false" size="120" rounded="xl"
+						@click="handleProfileClick(user.id)"
+					>
 						<v-avatar image="@/assets/images/profile1.jpg" size="100"/>
 					</v-btn>
 				</v-col>
@@ -83,6 +85,7 @@ export default {
 		return {
 			users: {
 				user1: {
+					id: 1,
 					name: "Maria",
 					surname: "Papastaurou",
 					location: "Peristeri",
@@ -92,6 +95,7 @@ export default {
 					previousTransaction: false
 				},
 				user2: {
+					id: 2,
 					name: "Maria",
 					surname: "Papastaurou",
 					location: "Peristeri",
@@ -105,8 +109,11 @@ export default {
 	},
 
 	methods: {
-		handleProfileClick() {
-			this.$router.push("/profile");
+		handleProfileClick(id) {
+			this.$router.push({
+				name: "profile",
+				params: { id }
+			});
 		}
 	}
 }

@@ -6,7 +6,11 @@ import Profile from "@/components/Profile.vue";
 const routes = [
 	{path: '/', component: HomePage},
 	{path: '/search', component: SearchPage},
-	{path: '/profile', component: Profile},
+	{
+		path: '/profile/:id',
+		name: 'profile',
+		component: Profile
+	},
 ]
 
 export default createRouter({
