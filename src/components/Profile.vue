@@ -17,7 +17,7 @@
 					</v-expansion-panel-title>
 
 					<v-expansion-panel-text class="px-2">
-						{{ user.description }}
+						{{ description }}
 					</v-expansion-panel-text>
 				</v-expansion-panel>
 
@@ -98,23 +98,29 @@ export default {
 
 	data() {
 		return {
-			params: null
 		}
 	},
 
 	computed: {
 		userID() {
-			return this.$route.params.id;
+			return parseInt(this.$route.params.id);
 		},
 
 		user() {
 			return this.$store.getters.getUserByID(this.userID);
+		},
+
+		description() {
+			return this.user?.additionalInfo?.description;
 		}
 	},
 
 	methods: {
 		handleEditClick() {
 		}
+	},
+
+	mounted() {
 	}
 
 	// created() {

@@ -1,6 +1,6 @@
 <template>
 	<SearchBar/>
-	<v-card class="my-10" flat>
+	<v-card v-if="users && !loading" class="my-10" flat>
 		<v-card-title>
 			<h1>
 				Αποτελεσματα Αναζητησης
@@ -9,7 +9,7 @@
 		<v-divider/>
 
 
-		<v-virtual-scroll v-if="users && users.length > 2" :items="users" height="1000">
+		<v-virtual-scroll v-if="users.length > 2" :items="users" height="1000">
 			<template v-slot:default="{ item: user }">
 				<v-card-item v-if="user" class="pa-4">
 					<v-row align="center">
@@ -73,10 +73,11 @@
 				</v-card-item>
 			</template>
 		</v-virtual-scroll>
-		<p v-else>
+		<p v-else class="pa-4">
 			No users matching your search
 		</p>
 	</v-card>
+	<v-skeleton-loader v-if="loading" type="card"></v-skeleton-loader>
 </template>
 
 <script>
@@ -88,7 +89,9 @@ export default {
 	components: {Calendar, SearchBar},
 
 	data() {
-		return {}
+		return {
+			loading: false
+		}
 	},
 
 	computed: {
@@ -106,8 +109,10 @@ export default {
 		}
 	},
 
-	created() {
+	mounted() {
+		this.loading = true;
 		this.$store.dispatch("getUsers");
+		this.loading = false;
 	}
 }
 </script>

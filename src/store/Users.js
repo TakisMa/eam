@@ -25,6 +25,18 @@ export default {
 		getUsers({commit}) {
 			const users = UsersAPI.getUsers()
 			commit("setUsers", users);
+		},
+
+		getUserByID({getters, commit}, userID){
+			if (!getters.getUsers()) {
+				const users = UsersAPI.getUsers();
+				commit("setUsers", users);
+
+				return getters.getUserByID(userID);
+			}
+			else {
+				getters.getUserByID(userID);
+			}
 		}
 	}
 }
