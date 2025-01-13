@@ -17,11 +17,7 @@
 					</v-expansion-panel-title>
 
 					<v-expansion-panel-text class="px-2">
-						Η Έυα σπουδάζει Παιδαγωγικά και εργάζεται ως φροντιστής τα τελευταία δύο χρόνια.
-						Έχει εμπειρία με παιδιά διαφόρων ηλικιών αλλά προτιμάει τα μη βρέφη.
-						Η Έυα είναι παθιασμένη με την ανάπτυξη των παιδιών και συχνά ενσωματώνει όσα μαθαίνει στα
-						μαθήματά της στο στυλ της ως φροντιστής. Είναι υπεύθυνη, συνεπής και φιλική, με έμφαση σε
-						διασκεδαστικές, ασφαλείς και δραστήριες δραστηριότητες.
+						{{ user.description }}
 					</v-expansion-panel-text>
 				</v-expansion-panel>
 
@@ -109,6 +105,10 @@ export default {
 	computed: {
 		userID() {
 			return this.$route.params.id;
+		},
+
+		user() {
+			return this.$store.getters.getUserByID(this.userID);
 		}
 	},
 
