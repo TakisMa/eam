@@ -91,7 +91,7 @@ export default {
 					title: "Πληροφορίες Επαγγελματιών",
 					icon: "mdi-help",
 					color: "#faefc0"
-				},
+				}
 			}
 		}
 	}

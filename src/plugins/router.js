@@ -10,7 +10,7 @@ const routes = [
 		path: '/profile/:id',
 		name: 'profile',
 		component: Profile
-	},
+	}
 ]
 
 export default createRouter({
