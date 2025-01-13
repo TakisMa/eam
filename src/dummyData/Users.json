@@ -1,0 +1,122 @@
+{
+  "user1": {
+    "id": 1,
+    "name": "Maria",
+    "surname": "Papastaurou",
+    "location": "Peristeri",
+    "workingTime": "Full time",
+    "education": "AEI",
+    "additionalInfo": {
+      "description": "Η Έυα σπουδάζει Παιδαγωγικά και εργάζεται ως φροντιστής τα τελευταία δύο χρόνια. Έχει εμπειρία με παιδιά διαφόρων ηλικιών αλλά προτιμάει τα μη βρέφη. Η Έυα είναι παθιασμένη με την ανάπτυξη των παιδιών και συχνά ενσωματώνει όσα μαθαίνει στα μαθήματά της στο στυλ της ως φροντιστής. Είναι υπεύθυνη, συνεπής και φιλική, με έμφαση σε διασκεδαστικές, ασφαλείς και δραστήριες δραστηριότητες."
+    },
+    "previousTransaction": false
+  },
+  "user2": {
+    "id": 2,
+    "name": "Kostas",
+    "surname": "Nikolaou",
+    "location": "Kallithea",
+    "workingTime": "Part time",
+    "education": "IEK",
+    "additionalInfo": {
+      "description": "Ο Κώστας είναι φοιτητής Φυσικής και εργάζεται ως καθηγητής φυσικής για μαθητές Γυμνασίου. Έχει μια μέθοδο διδασκαλίας που ενθαρρύνει την κριτική σκέψη και τη δημιουργικότητα. Ο Κώστας είναι επικοινωνιακός και προσαρμόζεται στις ανάγκες του κάθε μαθητή."
+    },
+    "previousTransaction": true
+  },
+  "user3": {
+    "id": 3,
+    "name": "Eleni",
+    "surname": "Georgiou",
+    "location": "Nea Smyrni",
+    "workingTime": "Full time",
+    "education": "TEI",
+    "additionalInfo": {
+      "description": "Η Ελένη εργάζεται ως παιδαγωγός και ειδικεύεται σε παιδιά με ειδικές ανάγκες. Έχει πολυετή εμπειρία σε σχολικά και οικιακά περιβάλλοντα. Η προσέγγισή της είναι ενσυναισθητική και βασίζεται στις σύγχρονες παιδαγωγικές αρχές."
+    },
+    "previousTransaction": false
+  },
+  "user4": {
+    "id": 4,
+    "name": "Dimitris",
+    "surname": "Papadopoulos",
+    "location": "Marousi",
+    "workingTime": "Full time",
+    "education": "AEI",
+    "additionalInfo": {
+      "description": "Ο Δημήτρης είναι πτυχιούχος Ψυχολογίας και έχει εμπειρία στην παροχή συμβουλών και υποστήριξης σε νέους. Έχει ευχάριστο χαρακτήρα και είναι γνωστός για την ικανότητά του να δημιουργεί ισχυρές σχέσεις εμπιστοσύνης."
+    },
+    "previousTransaction": true
+  },
+  "user5": {
+    "id": 5,
+    "name": "Sophia",
+    "surname": "Lazaridou",
+    "location": "Chalandri",
+    "workingTime": "Part time",
+    "education": "AEI",
+    "additionalInfo": {
+      "description": "Η Σοφία είναι απόφοιτη της Σχολής Νοσηλευτικής και εργάζεται ως φροντίστρια ηλικιωμένων. Διαθέτει άριστες επικοινωνιακές δεξιότητες και έμφαση στην ευελιξία και τη φροντίδα."
+    },
+    "previousTransaction": false
+  },
+  "user6": {
+    "id": 6,
+    "name": "Antonis",
+    "surname": "Karagiannis",
+    "location": "Ilion",
+    "workingTime": "Full time",
+    "education": "TEI",
+    "additionalInfo": {
+      "description": "Ο Αντώνης εργάζεται ως προπονητής παιδιών σε αθλητικά προγράμματα. Έχει εμπειρία σε ποδόσφαιρο και καλαθοσφαίριση, με έμφαση στην ομαδικότητα και την ατομική ανάπτυξη."
+    },
+    "previousTransaction": true
+  },
+  "user7": {
+    "id": 7,
+    "name": "Ioanna",
+    "surname": "Stamatopoulou",
+    "location": "Petroupoli",
+    "workingTime": "Part time",
+    "education": "IEK",
+    "additionalInfo": {
+      "description": "Η Ιωάννα είναι φοιτήτρια και εργάζεται σε κέντρο δημιουργικής απασχόλησης παιδιών. Είναι δημιουργική και δίνει έμφαση στις τέχνες και τις κατασκευές."
+    },
+    "previousTransaction": false
+  },
+  "user8": {
+    "id": 8,
+    "name": "Nikos",
+    "surname": "Vasilakis",
+    "location": "Piraeus",
+    "workingTime": "Full time",
+    "education": "AEI",
+    "additionalInfo": {
+      "description": "Ο Νίκος εργάζεται ως καθηγητής πληροφορικής. Έχει εμπειρία στη διδασκαλία προγραμματισμού και δικτύων, προσφέροντας εξατομικευμένα μαθήματα σε μαθητές και ενήλικες."
+    },
+    "previousTransaction": true
+  },
+  "user9": {
+    "id": 9,
+    "name": "Vasiliki",
+    "surname": "Kotsou",
+    "location": "Kifisia",
+    "workingTime": "Part time",
+    "education": "AEI",
+    "additionalInfo": {
+      "description": "Η Βασιλική είναι μουσικός και διδάσκει πιάνο και θεωρία της μουσικής. Είναι υπομονετική και προσαρμόζεται στις ανάγκες κάθε μαθητή."
+    },
+    "previousTransaction": false
+  },
+  "user10": {
+    "id": 10,
+    "name": "Petros",
+    "surname": "Alexiou",
+    "location": "Glyfada",
+    "workingTime": "Full time",
+    "education": "TEI",
+    "additionalInfo": {
+      "description": "Ο Πέτρος εργάζεται ως personal trainer και ειδικεύεται σε προγράμματα εκγύμνασης για όλες τις ηλικίες. Δίνει έμφαση στη διασκέδαση και τη βελτίωση της φυσικής κατάστασης."
+    },
+    "previousTransaction": true
+  }
+}
