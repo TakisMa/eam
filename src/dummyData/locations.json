@@ -1,0 +1,164 @@
+{
+  "locations": [
+    {
+      "title": "Αγίας Παρασκευής",
+      "value": "Agias Paraskeuis"
+    },
+    {
+      "title": "Αθηναίων",
+      "value": "Athinaion"
+    },
+    {
+      "title": "Αιγάλεω",
+      "value": "Aigaleo"
+    },
+    {
+      "title": "Αλίμου",
+      "value": "Alimou"
+    },
+    {
+      "title": "Αμαρουσίου",
+      "value": "Amarousiou"
+    },
+    {
+      "title": "Ασπροπύργου",
+      "value": "Aspropyrgou"
+    },
+    {
+      "title": "Βάρης-Βούλας-Βουλιαγμένης",
+      "value": "Varis-Voulas-Vouliagmenis"
+    },
+    {
+      "title": "Βύρωνα",
+      "value": "Byrona"
+    },
+    {
+      "title": "Γαλατσίου",
+      "value": "Galatsiou"
+    },
+    {
+      "title": "Γλυφάδας",
+      "value": "Glyfadas"
+    },
+    {
+      "title": "Δάφνης-Υμηττού",
+      "value": "Dafnis-Ymittou"
+    },
+    {
+      "title": "Ελληνικού-Αργυρούπολης",
+      "value": "Ellinikou-Argyroupolis"
+    },
+    {
+      "title": "Ζωγράφου",
+      "value": "Zografou"
+    },
+    {
+      "title": "Ηλιούπολης",
+      "value": "Ilioupolis"
+    },
+    {
+      "title": "Ηρακλείου",
+      "value": "Irakleiou"
+    },
+    {
+      "title": "Καλλιθέας",
+      "value": "Kallitheas"
+    },
+    {
+      "title": "Κηφισιάς",
+      "value": "Kifisias"
+    },
+    {
+      "title": "Κορυδαλλού",
+      "value": "Korydallou"
+    },
+    {
+      "title": "Λαυρεωτικής",
+      "value": "Lavreotikis"
+    },
+    {
+      "title": "Μαραθώνα",
+      "value": "Marathona"
+    },
+    {
+      "title": "Μαρκοπούλου Μεσογαίας",
+      "value": "Markopoulou-Mesogeas"
+    },
+    {
+      "title": "Μεγαρέων",
+      "value": "Megareon"
+    },
+    {
+      "title": "Μεταμόρφωσης",
+      "value": "Metamorfosis"
+    },
+    {
+      "title": "Μοσχάτου-Ταύρου",
+      "value": "Moschatou-Tavrou"
+    },
+    {
+      "title": "Νέας Ιωνίας",
+      "value": "Neas Ionias"
+    },
+    {
+      "title": "Νέας Σμύρνης",
+      "value": "Neas Smyrnis"
+    },
+    {
+      "title": "Νίκαιας-Αγίου Ιωάννη Ρέντη",
+      "value": "Nikaias-Agiou Ioanni Renti"
+    },
+    {
+      "title": "Παλλήνης",
+      "value": "Pallinis"
+    },
+    {
+      "title": "Πειραιά",
+      "value": "Peiraia"
+    },
+    {
+      "title": "Περάματος",
+      "value": "Peramatos"
+    },
+    {
+      "title": "Περιστερίου",
+      "value": "Peristeriou"
+    },
+    {
+      "title": "Πετρούπολης",
+      "value": "Petroupolis"
+    },
+    {
+      "title": "Ραφήνας-Πικερμίου",
+      "value": "Rafinas-Pikermiou"
+    },
+    {
+      "title": "Σαρωνικού",
+      "value": "Saronikou"
+    },
+    {
+      "title": "Σπάτων-Αρτέμιδος",
+      "value": "Spaton-Artemidos"
+    },
+    {
+      "title": "Φιλαδελφείας-Χαλκηδόνας",
+      "value": "Filadelfias-Chalkidonas"
+    },
+    {
+      "title": "Φιλοθέης-Ψυχικού",
+      "value": "Filotheis-Psychikou"
+    },
+    {
+      "title": "Χαϊδαρίου",
+      "value": "Chaidariou"
+    },
+    {
+      "title": "Χαλανδρίου",
+      "value": "Chalandriou"
+    },
+    {
+      "title": "Χολαργού-Παπάγου",
+      "value": "Cholargou-Papagou"
+    }
+  ]
+}

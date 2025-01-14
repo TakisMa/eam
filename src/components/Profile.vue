@@ -13,12 +13,16 @@
 							Γενικη Περιγραφη
 						</h3>
 						<v-spacer/>
-						<v-icon icon="mdi-pencil" @click.native.stop="handleEditClick"/>
+						<v-icon id="generalInfo"
+							:icon="generalInfoEditable ? 'mdi-check' : 'mdi-pencil'"
+							@click.native.stop="handleEditClick"/>
 					</v-expansion-panel-title>
 
-					<v-expansion-panel-text class="px-2">
+					<v-expansion-panel-text v-if="!generalInfoEditable" class="px-2">
 						{{ description }}
 					</v-expansion-panel-text>
+
+					<v-text-field v-else v-model="editTempText"/>
 				</v-expansion-panel>
 
 				<v-expansion-panel>
@@ -98,6 +102,8 @@ export default {
 
 	data() {
 		return {
+			editTempText: null,
+			generalInfoEditable: false,
 		}
 	},
 
@@ -116,7 +122,9 @@ export default {
 	},
 
 	methods: {
-		handleEditClick() {
+		handleEditClick(ev) {
+			this.editTempText = this.description;
+			this.generalInfoEditable = !this.generalInfoEditable;
 		}
 	},
 

@@ -111,8 +111,8 @@ export default {
 
 	mounted() {
 		this.loading = true;
-		this.$store.dispatch("getUsers");
-		this.loading = false;
+		this.$store.dispatch("getUsers")
+			.then(() => this.loading = false);
 	}
 }
 </script>

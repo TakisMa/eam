@@ -23,8 +23,12 @@ export default {
 
 	actions: {
 		getUsers({commit}) {
-			const users = UsersAPI.getUsers()
-			commit("setUsers", users);
+			return UsersAPI.getUsers()
+				.then(res => {
+					commit("setUsers", res.data);
+				})
+			// const users = UsersAPI.getUsers()
+			// commit("setUsers", users);
 		},
 
 		getUserByID({getters, commit}, userID){

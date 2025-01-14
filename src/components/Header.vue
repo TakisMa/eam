@@ -9,7 +9,7 @@
 		<v-btn color="secondary">
 			Ανακοινώσεις
 		</v-btn>
-		<v-btn color="secondary">
+		<v-btn color="secondary" @click="toHelp">
 			Βοήθεια
 		</v-btn>
 		<v-btn v-if="isLoggedIn" color="secondary" @click="toProfile">
@@ -35,11 +35,15 @@ export default {
 
 	methods: {
 		toHome() {
-			this.$router.push("/");
+			this.$router.push({ name: "home" });
 		},
 
 		toProfile() {
-			this.$router.push("/profile");
+			this.$router.push({ name: "profile" });
+		},
+
+		toHelp() {
+			this.$router.push({ name: "help" });
 		}
 	}
 }

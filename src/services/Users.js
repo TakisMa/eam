@@ -1,7 +1,8 @@
 import users from "@/dummyData/Users.json"
+import axios from "axios";
 
 export default {
 	getUsers() {
-		return Object.keys(users).map(key => users[key]);
+		return axios.get("http://localhost:3000/search");
 	}
 }
