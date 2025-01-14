@@ -102,6 +102,7 @@ export default {
 
 	data() {
 		return {
+			user: null,
 			editTempText: null,
 			generalInfoEditable: false,
 		}
@@ -110,10 +111,6 @@ export default {
 	computed: {
 		userID() {
 			return parseInt(this.$route.params.id);
-		},
-
-		user() {
-			return this.$store.getters.getUserByID(this.userID);
 		},
 
 		description() {
@@ -125,12 +122,31 @@ export default {
 		handleEditClick(ev) {
 			this.editTempText = this.description;
 			this.generalInfoEditable = !this.generalInfoEditable;
+		},
+
+		async loadUser() {
+			if (!this.$store.getters.getUsers()) {
+				await this.$store.dispatch("getUserByID", this.userID)
+						  .then(user => {
+							  if (user) {
+								  this.user = user;
+							  }
+							  else {
+								  alert("Something went wrong. User not found!. Please try again");
+							  }
+						  });
+			}
+			else {
+				this.user = this.$store.getters.getUserByID(this.userID);
+			}
 		}
 	},
 
 	mounted() {
+		this.loadUser();
 	}
 
+	//configure to watch for user change
 	// created() {
 	// 	this.$watch(
 	// 		() => this.$route.params.id,

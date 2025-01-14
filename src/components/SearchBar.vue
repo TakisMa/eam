@@ -69,7 +69,6 @@ export default {
 			childAge: null,
 			previousExperience: null,
 			education: null,
-
 		}
 	}
 }

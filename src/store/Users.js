@@ -1,4 +1,4 @@
-import UsersAPI from "@/services/Users"
+import UsersApi from "@/services/Users"
 
 export default {
 	state: {
@@ -23,24 +23,23 @@ export default {
 
 	actions: {
 		getUsers({commit}) {
-			return UsersAPI.getUsers()
+			return UsersApi.getUsers()
 				.then(res => {
 					commit("setUsers", res.data);
 				})
-			// const users = UsersAPI.getUsers()
-			// commit("setUsers", users);
+		},
+		
+		getUsersWithFilters(filters) {
+			return UsersApi.getUsersWithFilters(filters);
 		},
 
 		getUserByID({getters, commit}, userID){
-			if (!getters.getUsers()) {
-				const users = UsersAPI.getUsers();
-				commit("setUsers", users);
-
-				return getters.getUserByID(userID);
-			}
-			else {
-				getters.getUserByID(userID);
-			}
+			return UsersApi.getUserByID(userID)
+				.then(res => {
+					res.data = res.data[0];
+					res.data.additionalInfo = JSON.parse(res.data.additionalInfo);
+					return res.data;
+				});
 		}
 	}
 }
