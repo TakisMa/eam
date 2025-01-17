@@ -15,8 +15,11 @@
 		<v-btn v-if="isLoggedIn" color="secondary" @click="toProfile">
 			Προφίλ
 		</v-btn>
-		<v-btn color="secondary" @click="toLogin">
+		<v-btn v-if="!isLoggedIn" color="secondary" @click="toLogin">
 			Είσοδος
+		</v-btn>
+		<v-btn v-else color="secondary" @click="logout">
+			Έξοδος
 		</v-btn>
 	</v-app-bar>
 
@@ -29,7 +32,7 @@ export default {
 	computed: {
 		isLoggedIn() {
 			// return this.$store.getters.isLoggedIn();
-			return false;
+			return this.$store.getters.isLoggedIn();
 		}
 	},
 
@@ -39,7 +42,10 @@ export default {
 		},
 
 		toProfile() {
-			this.$router.push({ name: "profile" });
+			this.$router.push({
+				name: "profile",
+				params: { id: this.$store.getters.loggedUserID()}
+			});
 		},
 
 		toHelp() {
@@ -48,6 +54,10 @@ export default {
 
 		toLogin() {
 			this.$router.push({ name: "login" });
+		},
+
+		logout() {
+			this.$store.dispatch("userLogout");
 		}
 	}
 }
