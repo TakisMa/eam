@@ -3,12 +3,17 @@ import UsersApi from "@/services/Users"
 export default {
 	state: {
 		loggedUser: null,
-		users: null
+		users: null,
+		filteredUsers: null
 	},
 
 	getters: {
 		getUsers: (state) => () => {
 			return state.users;
+		},
+
+		getFilteredUsers: (state) => () => {
+			return state.filteredUsers;
 		},
 
 		getUserByID: (state) => (id) => {
@@ -33,6 +38,10 @@ export default {
 			state.users = users;
 		},
 
+		setFilteredUsers(state, users) {
+			state.filteredUsers = users;
+		},
+
 		setLoggedUser(state, user) {
 			state.loggedUser = user;
 		}
@@ -43,6 +52,7 @@ export default {
 			return UsersApi.getUsers()
 				.then(res => {
 					commit("setUsers", res.data);
+					commit("setFilteredUsers", res.data);
 				});
 		},
 		
@@ -67,6 +77,10 @@ export default {
 
 		userLogout({ commit } ) {
 			commit("setLoggedUser", null);
+		},
+
+		resetFilteredUsers({ getters, commit }) {
+			commit("setFilteredUsers", getters.getUsers());
 		}
 	}
 }

@@ -8,7 +8,7 @@
 		</v-card-title>
 		<v-divider/>
 
-		<v-virtual-scroll v-if="users.length > 2" :items="users" height="1000">
+		<v-virtual-scroll v-if="filteredUsers.length > 2" :items="filteredUsers" height="1000">
 			<template v-slot:default="{ item: user }">
 				<v-card-item v-if="user" class="pa-4">
 					<v-row align="center">
@@ -45,7 +45,10 @@
 						</v-col>
 
 						<v-col cols="3">
-							<Calendar :search-button-enabled="false"/>
+							<Calendar
+								:available-dates-array="user.availability"
+								:search-button-enabled="false"
+							/>
 						</v-col>
 
 						<v-col cols="3" class="d-flex flex-column ">
@@ -72,7 +75,7 @@
 				</v-card-item>
 			</template>
 		</v-virtual-scroll>
-		<v-card-item v-else-if="users.length" v-for="user in users" class="pa-4">
+		<v-card-item v-else-if="filteredUsers.length" v-for="user in filteredUsers" class="pa-4">
 			<v-row align="center">
 				<v-col cols="1">
 					<v-btn class="d-flex align-center"
@@ -107,7 +110,10 @@
 				</v-col>
 
 				<v-col cols="3">
-					<Calendar :search-button-enabled="false"/>
+					<Calendar
+						:available-dates-array="user.availability"
+						:search-button-enabled="false"
+					/>
 				</v-col>
 
 				<v-col cols="3" class="d-flex flex-column ">
@@ -156,6 +162,10 @@ export default {
 	computed: {
 		users() {
 			return this.$store.getters.getUsers();
+		},
+
+		filteredUsers() {
+			return this.$store.getters.getFilteredUsers();
 		}
 	},
 
@@ -168,14 +178,28 @@ export default {
 		},
 
 		searchUsers(filters) {
-			this.$store.dispatch("getUsersWithFilters", filters);
+			const users = this.users.filter(user => {
+				return filters.locations.some(user.location_id) ||
+					   filters.childAge === user.childAge ||
+					   filters.workingTime === user.workingTime ||
+					   filters.education === user.education
+			});
+
+			this.$store.commit("setFilteredUsers", users);
+			// this.$store.dispatch("getUsersWithFilters", filters);
 		}
 	},
 
 	mounted() {
 		this.loading = true;
-		this.$store.dispatch("getUsers")
-			.then(() => this.loading = false);
+
+		if (!this.users) {
+			this.$store.dispatch("getUsers")
+				.then(() => this.loading = false);
+		}
+		else {
+			this.loading = false;
+		}
 	}
 }
 </script>

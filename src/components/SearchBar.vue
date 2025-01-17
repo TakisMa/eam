@@ -7,6 +7,7 @@
 					item-title="title"
 					item-value="id"
 					placeholder="Επιλεξτε Δημο"
+					clearable
 					variant="outlined"
 					density="compact"
 					bg-color="white"
@@ -17,8 +18,9 @@
 
 			<v-col>
 				<v-select v-model="childAge"
-					:items="[1, 2, 3, 4, 5]"
-					placeholder="Επιλεξτε Ηλικια"
+					:items="childAgeItems"
+					placeholder="Επιλεξτε Ηλικια (μηνες)"
+					clearable
 					variant="outlined"
 					density="compact"
 					bg-color="white"
@@ -28,8 +30,9 @@
 
 			<v-col>
 				<v-select v-model="previousExperience"
-					:items="[1, 2, 3, 4, 5]"
+					:items="previousExperienceItems"
 					placeholder="Επιλεξτε Προϋπηρεσία"
+					clearable
 					variant="outlined"
 					density="compact"
 					bg-color="white"
@@ -41,6 +44,7 @@
 				<v-select v-model="education"
 					:items="['Δευτεροβαθμεια', 'Τριτοβαθμια']"
 					placeholder="Επιλεξτε Εκπαιδευση"
+					clearable
 					variant="outlined"
 					density="compact"
 					bg-color="white"
@@ -48,11 +52,29 @@
 				/>
 			</v-col>
 
-			<v-col class="d-flex justify-center">
+			<v-col>
+				<v-select v-model="workingTime"
+					:items="workingTimeItems"
+					placeholder="Επιλεξτε ωραριο απασχολησης"
+					clearable
+					variant="outlined"
+					density="compact"
+					bg-color="white"
+					hide-details
+				/>
+			</v-col>
+
+			<v-col class="d-flex flex-row ">
 				<v-btn text="Αναζητηση"
 					append-icon="mdi-magnify"
 					width="60%" color="#3E2828FF"
 					@click="searchUsers"
+				/>
+
+				<v-btn class="d-flex flex-wrap" text="Καθαρισμος φιλτρων"
+					append-icon="mdi-close-circle-outline"
+					width="40%" color="#C95353FF"
+					@click="resetFilteredUsers"
 				/>
 			</v-col>
 
@@ -72,15 +94,37 @@ export default {
 			locations: null,
 			locationItems: [],
 			childAge: null,
+			childAgeItems: Array.from({length: 29}, (_, index) => index + 2),
 			previousExperience: null,
+			previousExperienceItems: [
+				{
+					title: 'Ναι',
+					value: true
+				},
+				{
+					title: 'Οχι',
+					value: false
+				}
+			],
 			education: null,
+			workingTime:null,
+			workingTimeItems: [
+				{
+					title: 'Πληρης απασχοληση',
+					value: 'Full time'
+				},
+				{
+					title: 'Μερικη απασχοληση',
+					value: 'Part time'
+				}
+			]
 		}
 	},
 
 	methods: {
 		async loadLocations() {
 			await this.$store.dispatch("getLocations")
-				.then(res => this.locationItems = res);
+					  .then(res => this.locationItems = res);
 		},
 
 		searchUsers() {
@@ -90,6 +134,16 @@ export default {
 				workingTime: this.previousExperience,
 				education: this.education
 			});
+		},
+
+		resetFilteredUsers() {
+			this.locations = null;
+			this.childAge = null;
+			this.previousExperience = null;
+			this.education = null;
+			this.workingTime = null;
+
+			this.$store.dispatch("resetFilteredUsers");
 		}
 	},
 

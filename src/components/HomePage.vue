@@ -27,7 +27,9 @@
 				</v-row>
 			</v-col>
 			<v-col>
-				<Calendar/>
+				<Calendar
+					:available-dates-array="availableDates"
+				/>
 			</v-col>
 		</v-row>
 
@@ -55,6 +57,7 @@ import Calendar from "@/components/Calendar.vue";
 
 export default {
 	name: "HomePage",
+
 	components: {Calendar, ButtonGroup},
 
 	data() {
@@ -92,7 +95,29 @@ export default {
 					icon: "mdi-help",
 					color: "#faefc0"
 				}
-			}
+			},
+			availableDates: [],
+			selectedDates: []
+		}
+	},
+
+	methods: {
+		handleUpdateDates(selectedDates) {
+			this.selectedDates = selectedDates;
+		}
+	},
+
+	mounted() {
+		if (!this.$store.getters.getUsers()) {
+			this.$store.dispatch("getUsers")
+				.then(() => {
+					const users = this.$store.getters.getUsers();
+					this.availableDates = users.reduce((acc, user) => acc.concat(user.availability), []);
+				})
+		}
+		else {
+			const users = this.$store.getters.getUsers();
+			this.availableDates = users.reduce((acc, user) => acc.concat(user.availability), []);
 		}
 	}
 }
