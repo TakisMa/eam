@@ -1,10 +1,12 @@
 import {createStore} from "vuex";
 import Users from "./Users"
 import HelpersApi from "@/services/Helpers.js";
+import DraftContact from "./DraftContact.js";
 
 export default createStore({
 	modules: {
-		Users
+		Users,
+		DraftContact
 	},
 
 	state: {

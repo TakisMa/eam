@@ -1,5 +1,4 @@
 import axios from "axios";
-import {createRouter} from "vue-router";
 
 export default {
 	getUsers() {

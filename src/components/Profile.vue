@@ -145,16 +145,6 @@ export default {
 	mounted() {
 		this.loadUser();
 	}
-
-	//configure to watch for user change
-	// created() {
-	// 	this.$watch(
-	// 		() => this.$route.params.id,
-	// 		(newId, oldId) => {
-	// 			// react to route changes...
-	// 		}
-	// 	)
-	// },
 }
 </script>
 

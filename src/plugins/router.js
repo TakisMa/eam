@@ -4,6 +4,7 @@ import SearchPage from "@/components/SearchPage.vue";
 import Profile from "@/components/Profile.vue";
 import HelpPage from "@/components/HelpPage.vue";
 import LoginPage from "@/components/LoginPage.vue";
+import ContactFormPage from "@/components/ContactFormPage.vue";
 
 const routes = [
 	{
@@ -30,6 +31,11 @@ const routes = [
 		path: '/login',
 		name: 'login',
 		component: LoginPage
+	},
+	{
+		path: '/contact?:targetID',
+		name: 'contactForm',
+		component: ContactFormPage
 	}
 ]
 

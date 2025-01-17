@@ -55,13 +55,14 @@
 							<v-btn class="my-4"
 								text="Κλειστε Ηλεκτρονικο Ραντεβου"
 								append-icon="mdi-arrow-right-circle-outline"
-								color="#FFA000FF"
+								color="primary"
 								width="65%"
+								@click="contactProf(user.id)"
 							/>
 							<v-btn class="my-4"
 								text="Κλειστε Δια Ζωσης Ραντεβου"
 								append-icon="mdi-arrow-right-circle-outline"
-								color="#FAEFC0FF"
+								color="secondary"
 								width="65%"
 							/>
 							<v-btn v-if="user.previousTransaction" class="my-4"
@@ -187,6 +188,13 @@ export default {
 
 			this.$store.commit("setFilteredUsers", users);
 			// this.$store.dispatch("getUsersWithFilters", filters);
+		},
+
+		contactProf(targetID) {
+			this.$router.push({
+				name: "contactForm",
+				params: { targetID }
+			})
 		}
 	},
 
