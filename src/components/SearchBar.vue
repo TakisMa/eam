@@ -2,8 +2,10 @@
 	<v-container class="search-bar-container">
 		<v-row>
 			<v-col>
-				<v-select v-model="location"
+				<v-select v-model="locations"
 					:items="locationItems"
+					item-title="title"
+					item-value="id"
 					placeholder="Επιλεξτε Δημο"
 					variant="outlined"
 					density="compact"
@@ -49,7 +51,9 @@
 			<v-col class="d-flex justify-center">
 				<v-btn text="Αναζητηση"
 					append-icon="mdi-magnify"
-					width="60%" color="#3E2828FF"/>
+					width="60%" color="#3E2828FF"
+					@click="searchUsers"
+				/>
 			</v-col>
 
 		</v-row>
@@ -57,19 +61,40 @@
 </template>
 
 <script>
-import { locations } from "@/dummyData/locations"
 
 export default {
 	name: "SearchBar",
 
+	emits: ["searchUsers"],
+
 	data() {
 		return {
-			location: null,
-			locationItems: locations,
+			locations: null,
+			locationItems: [],
 			childAge: null,
 			previousExperience: null,
 			education: null,
 		}
+	},
+
+	methods: {
+		async loadLocations() {
+			await this.$store.dispatch("getLocations")
+				.then(res => this.locationItems = res);
+		},
+
+		searchUsers() {
+			this.$emit("searchUsers", {
+				locations: this.locations,
+				childAge: this.childAge,
+				workingTime: this.previousExperience,
+				education: this.education
+			});
+		}
+	},
+
+	created() {
+		this.loadLocations();
 	}
 }
 </script>

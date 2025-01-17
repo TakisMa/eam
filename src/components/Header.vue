@@ -15,7 +15,7 @@
 		<v-btn v-if="isLoggedIn" color="secondary" @click="toProfile">
 			Προφίλ
 		</v-btn>
-		<v-btn color="secondary">
+		<v-btn color="secondary" @click="toLogin">
 			Είσοδος
 		</v-btn>
 	</v-app-bar>
@@ -44,6 +44,10 @@ export default {
 
 		toHelp() {
 			this.$router.push({ name: "help" });
+		},
+
+		toLogin() {
+			this.$router.push({ name: "login" });
 		}
 	}
 }

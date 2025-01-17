@@ -29,17 +29,17 @@ export default {
 				})
 		},
 		
-		getUsersWithFilters(filters) {
-			return UsersApi.getUsersWithFilters(filters);
+		getUsersWithFilters({ commit }, filters) {
+			return UsersApi.getUsersWithFilters(filters)
+				.then(res => {
+					// const data = res.data.map(d => JSON.parse(d.additionalInfo));
+					commit("setUsers", res.data);
+				})
 		},
 
 		getUserByID({getters, commit}, userID){
 			return UsersApi.getUserByID(userID)
-				.then(res => {
-					res.data = res.data[0];
-					res.data.additionalInfo = JSON.parse(res.data.additionalInfo);
-					return res.data;
-				});
+				.then(res => res.data);
 		}
 	}
 }

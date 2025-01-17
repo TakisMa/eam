@@ -1,5 +1,6 @@
 import {createStore} from "vuex";
 import Users from "./Users"
+import HelpersApi from "@/services/Helpers.js";
 
 export default createStore({
 	modules: {
@@ -19,6 +20,9 @@ export default createStore({
 	},
 
 	actions: {
-
+		getLocations() {
+			return HelpersApi.getLocations()
+				.then(res => res.data);
+		}
 	}
 })

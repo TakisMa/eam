@@ -6,8 +6,8 @@ export default {
 	},
 
 	getUsersWithFilters(filters) {
-		return axios.get("http://localhost:3000/search", {
-			params: {filters: JSON.stringify(filters)}
+		return axios.get("http://localhost:3000/paramsSearch", {
+			params: { filters: JSON.stringify(filters) }
 		})
 	},
 
