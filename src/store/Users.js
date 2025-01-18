@@ -88,11 +88,13 @@ export default {
 			return UsersApi.userLogin(credentials)
 				.then(res => {
 					commit("setLoggedUser", res.data);
+					return res.data
 				});
 		},
 
 		userLogout({ commit } ) {
 			commit("setLoggedUser", null);
+			localStorage.removeItem("user");
 		},
 
 		resetFilteredUsers({ getters, commit }) {

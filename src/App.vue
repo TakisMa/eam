@@ -15,10 +15,15 @@ import Main from "@/components/Main.vue";
 
 export default {
 	name: "App",
+
 	components: {Main, Header},
 
-	data() {
-		return {}
+	mounted() {
+		const user = JSON.parse(localStorage.getItem("user"));
+
+		if (user) {
+			this.$store.commit("setLoggedUser", user);
+		}
 	}
 }
 </script>

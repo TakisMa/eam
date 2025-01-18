@@ -21,6 +21,8 @@
 								:rules="passwordRules"
 								required
 							></v-text-field>
+							<v-checkbox v-model="keepLoggedIn"
+								label="Να με θυμάσαι"/>
 							<v-btn
 								class="mt-4"
 								color="primary"
@@ -46,6 +48,7 @@ export default {
 		return {
 			email: '',
 			password: '',
+			keepLoggedIn: true,
 			valid: false,
 			emailRules: [
 				(v) => !!v || 'Email is required',
@@ -65,7 +68,12 @@ export default {
 					email: this.email,
 					password: this.password
 				})
-					.then(() => this.$router.push({ name: "home" }));
+					.then(user => {
+						this.$router.push({ name: "home" });
+						if (this.keepLoggedIn) {
+							localStorage.setItem("user", JSON.stringify(user));
+						}
+					});
 			}
 		},
 	},
