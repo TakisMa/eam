@@ -74,7 +74,20 @@
 						<v-icon icon="mdi-pencil" @click.native.stop="handleEditClick"/>
 					</v-expansion-panel-title>
 
-					<v-expansion-panel-text class="px-2">
+					<v-expansion-panel-text class="d-flex align-center px-2">
+						<v-divider thickness="5"/>
+
+						<div class="d-flex flex-row px-2">
+							<p class="d-flex align-center">
+								Συνέχεια συμπλήρωσης φόρμας επικοινωνίας
+							</p>
+							<v-spacer/>
+							<v-btn
+								color="primary"
+								text="Συμπλήρωση"
+								@click="continueContactFormFromDraft"
+							/>
+						</div>
 					</v-expansion-panel-text>
 				</v-expansion-panel>
 
@@ -115,6 +128,10 @@ export default {
 
 		description() {
 			return this.user?.additionalInfo?.description;
+		},
+
+		draft() {
+			return this.$store.getters.getDraft();
 		}
 	},
 
@@ -139,11 +156,22 @@ export default {
 			else {
 				this.user = this.$store.getters.getUserByID(this.userID);
 			}
+		},
+
+		async loadDraft() {
+			if (!this.$store.getters.getDraft()) {
+				await this.$store.dispatch("getDraft", this.userID);
+			}
+		},
+
+		continueContactFormFromDraft() {
+
 		}
 	},
 
 	mounted() {
 		this.loadUser();
+		this.loadDraft();
 	}
 }
 </script>

@@ -70,6 +70,22 @@
 							></v-text-field>
 						</v-col>
 					</v-row>
+					<v-divider class="my-3" thickness="2"/>
+					<v-text-field
+						v-model="adt"
+						placeholder="ΑΔΤ"
+						:disabled="autoImport"
+					></v-text-field>
+					<v-text-field
+						v-model="amka"
+						placeholder="ΑΜΚΑ"
+						:disabled="autoImport"
+					></v-text-field>
+					<v-text-field
+						v-model="afm"
+						placeholder="ΑΦΜ"
+						:disabled="autoImport"
+					></v-text-field>
 					<v-textarea
 						v-model="additionalInfo"
 						placeholder="Επιπλέον πληροφορίες"
@@ -77,7 +93,7 @@
 
 					<v-checkbox
 						v-model="autoImport"
-						label="Χρήση στοιχείων προφίλ"
+						label="Χρήση στοιχείων προφίλ (Απαιτείται σύνδεση)"
 						:disabled="!isLoggedIn"
 					></v-checkbox>
 
@@ -121,6 +137,13 @@ export default {
 			name: null,
 			surname: null,
 			additionalInfo: null,
+
+			adt: null,
+			amka: null,
+			afm: null,
+			dateOfBirth: null,
+			childAge: null,
+
 			autoImport: false,
 			valid: false,
 			emailRules: [
@@ -132,6 +155,10 @@ export default {
 
 	computed: {
 		user() {
+			return this.$store.getters.loggedUser();
+		},
+
+		userExtended() {
 			return this.$store.getters.loggedUser();
 		},
 
@@ -167,6 +194,10 @@ export default {
 		loadTargetUser() {
 			const users = this.$store.getters.getUsers();
 			this.targetUser = users.find(u => u.id === this.targetID);
+		},
+
+		async loadLoggedUserExtended() {
+			await this.$store.dispatch("getUserExtended", this.user.id);
 		}
 	},
 
@@ -176,6 +207,7 @@ export default {
 		}
 
 		this.loadTargetUser();
+		this.loadLoggedUserExtended();
 	},
 
 	watch: {
@@ -184,6 +216,10 @@ export default {
 				this.email = this.user.email;
 				this.name = this.user.name;
 				this.surname = this.user.surname;
+
+				this.adt = this.userExtended.adt;
+				this.amka = this.userExtended.amka;
+				this.afm = this.userExtended.afm;
 			}
 		}
 	}

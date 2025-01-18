@@ -17,6 +17,10 @@ export default {
 		})
 	},
 
+	getUserExtendedByID(id) {
+		return axios.get(`http://localhost:3000/user/${id}/extended`)
+	},
+
 	userLogin(credentials) {
 		return axios.post("http://localhost:3000/login", {
 			params: { credentials }
