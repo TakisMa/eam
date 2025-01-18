@@ -71,7 +71,6 @@
 							Ενεργές Συνεργασίες/ Ραντεβού
 						</h3>
 						<v-spacer/>
-						<v-icon icon="mdi-pencil" @click.native.stop="handleEditClick"/>
 					</v-expansion-panel-title>
 
 					<v-expansion-panel-text class="d-flex align-center px-2">
@@ -110,6 +109,12 @@
 </template>
 
 <script>
+const messages = [
+	"Συνέχεια συμπλήρωσης φόρμας επικοινωνίας",
+	"Προβολή αίτησης",
+	"Ακύρωση αίτησης"
+]
+
 export default {
 	name: "Profile",
 
@@ -132,6 +137,10 @@ export default {
 
 		draft() {
 			return this.$store.getters.getDraft();
+		},
+
+		document() {
+			return this.$store.getters.get
 		}
 	},
 

@@ -30,8 +30,10 @@
 								label="E-mail"
 								:rules="emailRules"
 								required
+								@input="autoImport=false"
 							></v-text-field>
 						</v-col>
+						<v-divider vertical thickness="2"/>
 						<v-col>
 							<v-text-field
 								:model-value="targetUser?.email"
@@ -48,10 +50,11 @@
 								placeholder="Όνομα"
 								variant="outlined"
 								label="Όνομα"
-								:disabled="autoImport"
 								required
+								@input="autoImport=false"
 							></v-text-field>
 						</v-col>
+						<v-divider vertical thickness="2"/>
 						<v-col>
 							<v-text-field
 								:model-value="targetUser?.name"
@@ -68,10 +71,11 @@
 								placeholder="Επίθετο"
 								variant="outlined"
 								label="Επίθετο"
-								:disabled="autoImport"
 								required
+								@input="autoImport=false"
 							></v-text-field>
 						</v-col>
+						<v-divider vertical thickness="2"/>
 						<v-col>
 							<v-text-field
 								:model-value="targetUser?.surname"
@@ -89,7 +93,8 @@
 								placeholder="ΑΔΤ"
 								variant="outlined"
 								label="ΑΔΤ"
-								:disabled="autoImport"
+								required
+								@input="autoImport=false"
 							></v-text-field>
 						</v-col>
 						<v-col>
@@ -98,7 +103,8 @@
 								placeholder="ΑΜΚΑ"
 								variant="outlined"
 								label="ΑΜΚΑ"
-								:disabled="autoImport"
+								required
+								@input="autoImport=false"
 							></v-text-field>
 						</v-col>
 						<v-col>
@@ -107,7 +113,8 @@
 								placeholder="ΑΦΜ"
 								variant="outlined"
 								label="ΑΦΜ"
-								:disabled="autoImport"
+								required
+								@input="autoImport=false"
 							></v-text-field>
 						</v-col>
 					</v-row>
@@ -118,6 +125,8 @@
 								placeholder="Τηλέφωνο Επικοινωνίας"
 								variant="outlined"
 								label="Τηλέφωνο Επικοινωνίας"
+								required
+								@input="autoImport=false"
 							></v-text-field>
 						</v-col>
 						<v-col>
@@ -137,7 +146,7 @@
 								<v-date-picker
 									v-model="dateOfBirth"
 									hide-header
-									@update:model-value="(date) => menu = false">
+									@update:model-value="handleInput">
 									>
 								</v-date-picker>
 							</v-menu>
@@ -248,7 +257,21 @@ export default {
 	methods: {
 		submit() {
 			if (this.$refs.form.validate()) {
-				alert("Form submitted!");
+				this.$store.dispatch("saveFinal", {
+					userID: this.user.id,
+					document: {
+						targetUserID: this.targetUser.id,
+						email: this.email,
+						name: this.name,
+						surname: this.surname,
+						additionalInfo: this.additionalInfo,
+						adt: this.adt,
+						amka: this.amka,
+						afm: this.afm,
+						dateOfBirth: this.date_of_birth,
+						phone: this.phone
+					}
+				});
 			}
 		},
 
@@ -291,6 +314,11 @@ export default {
 			this.phone = this.draft?.phone;
 
 			this.autoImport = true;
+		},
+
+		handleInput() {
+			this.menu = false;
+			this.autoImport = false;
 		}
 	},
 
