@@ -61,10 +61,10 @@ export default {
 				if (users.length) {
 					this.$store.commit("setFilteredUsers", users);
 				}
-				this.$router.push("/search");
+				this.$router.push({ name: "searchPage" });
 			}
 			else {
-				this.$router.push("/search");
+				this.$router.push({ name: "searchPage" });
 			}
 		}
 	}

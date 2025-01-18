@@ -10,32 +10,38 @@ const routes = [
 	{
 		path: '/',
 		name: 'home',
-		component: HomePage
+		component: HomePage,
+		meta: { breadcrumb: "Home" }
 	},
 	{
 		path: '/search',
 		name: 'searchPage',
-		component: SearchPage
+		component: SearchPage,
+		meta: { breadcrumb: "Search" }
 	},
 	{
 		path: '/profile/:id',
 		name: 'profile',
-		component: Profile
+		component: Profile,
+		meta: { breadcrumb: "Profile" }
 	},
 	{
 		path: '/help',
 		name: 'help',
-		component: HelpPage
+		component: HelpPage,
+		meta: { breadcrumb: "Help" }
 	},
 	{
 		path: '/login',
 		name: 'login',
-		component: LoginPage
+		component: LoginPage,
+		meta: { breadcrumb: "Login" }
 	},
 	{
 		path: '/contact?:targetID',
 		name: 'contactForm',
-		component: ContactFormPage
+		component: ContactFormPage,
+		meta: { breadcrumb: "Contact Form" }
 	}
 ]
 
