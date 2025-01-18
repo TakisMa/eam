@@ -10,6 +10,18 @@ export default {
 		})
 	},
 
+	getDraft(userID) {
+		return axios.get("http://localhost:3000/contact/draft", {
+			params: { userID }
+		});
+	},
+
+	clearDraft(userID) {
+		return axios.delete("http://localhost:3000/contact/draft", {
+			params: { userID }
+		});
+	},
+
 	saveFinalDocument(userID, document) {
 		return axios.post("http://localhost:3000/contact/final", {
 			params: {
@@ -17,12 +29,6 @@ export default {
 				document
 			}
 		})
-	},
-
-	getDraft(userID) {
-		return axios.get("http://localhost:3000/contact/draft", {
-			params: { userID }
-		});
 	},
 
 	getDocument(userID) {

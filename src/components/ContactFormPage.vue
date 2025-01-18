@@ -1,4 +1,14 @@
 <template>
+	<div class="d-flex justify-center">
+		<v-alert
+			v-model="alert.open"
+			:text="alert.text"
+			:type="alert.type"
+			closable
+			prominent
+			max-width="530"
+		></v-alert>
+	</div>
 	<v-container class="d-flex justify-center">
 		<v-card width="530">
 			<v-card-item>
@@ -219,6 +229,11 @@ export default {
 
 			autoImport: false,
 			menu: false,
+			alert: {
+				open: false,
+				type: null,
+				text: null
+			},
 			valid: false,
 			emailRules: [
 				(v) => !!v || 'Email is required',
@@ -258,20 +273,52 @@ export default {
 		submit() {
 			if (this.$refs.form.validate()) {
 				this.$store.dispatch("saveFinal", {
-					userID: this.user.id,
-					document: {
-						targetUserID: this.targetUser.id,
-						email: this.email,
-						name: this.name,
-						surname: this.surname,
-						additionalInfo: this.additionalInfo,
-						adt: this.adt,
-						amka: this.amka,
-						afm: this.afm,
-						dateOfBirth: this.date_of_birth,
-						phone: this.phone
-					}
-				});
+						userID: this.user.id,
+						document: {
+							targetUserID: this.targetUser.id,
+							email: this.email,
+							name: this.name,
+							surname: this.surname,
+							additionalInfo: this.additionalInfo,
+							adt: this.adt,
+							amka: this.amka,
+							afm: this.afm,
+							dateOfBirth: this.date_of_birth,
+							phone: this.phone
+						}
+					})
+					.then(res => {
+						if (res.status === 200) {
+							this.alert = {
+								open: true,
+								type: "success",
+								text: "Επιτυχής υποβολή αίτησης!"
+							}
+							this.$store.dispatch("clearDraft", {userID: this.user.id})
+								.then(res => {
+									if (res.status !== 200) {
+										this.alert = {
+											open: true,
+											type: "error",
+											text: "Προέκυψε κάποιο πρόβλημα κατά την υποβολή της αίτησης!"
+										}
+									}
+									else {
+										this.$router.push({
+											name: "profile",
+											params: {id: this.$store.getters.loggedUserID()}
+										});
+									}
+								});
+						}
+						else {
+							this.alert = {
+								open: true,
+								type: "error",
+								text: "Προέκυψε κάποιο πρόβλημα κατά την υποβολή της αίτησης!"
+							}
+						}
+					});
 			}
 		},
 
@@ -290,7 +337,7 @@ export default {
 					dateOfBirth: this.date_of_birth,
 					phone: this.phone
 				}
-			})
+			});
 		},
 
 		loadTargetUser() {

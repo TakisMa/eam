@@ -193,7 +193,10 @@ export default {
 		contactProf(targetID) {
 			this.$router.push({
 				name: "contactForm",
-				params: { targetID }
+				params: {
+					targetID,
+					continueFromDraft: false
+				}
 			})
 		}
 	},
