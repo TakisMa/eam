@@ -52,7 +52,7 @@ export default {
 		},
 
 		setLoggedUserExtended(state, user) {
-			state.loggedUser = user;
+			state.loggedUserExtended = user;
 		}
 	},
 

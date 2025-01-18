@@ -26,6 +26,8 @@
 							<v-text-field
 								v-model="email"
 								placeholder="E-mail"
+								variant="outlined"
+								label="E-mail"
 								:rules="emailRules"
 								:disabled="autoImport"
 								required
@@ -34,6 +36,8 @@
 						<v-col>
 							<v-text-field
 								:model-value="targetUser?.email"
+								variant="outlined"
+								label="E-mail"
 								disabled
 							></v-text-field>
 						</v-col>
@@ -43,6 +47,8 @@
 							<v-text-field
 								v-model="name"
 								placeholder="Όνομα"
+								variant="outlined"
+								label="Όνομα"
 								:disabled="autoImport"
 								required
 							></v-text-field>
@@ -50,6 +56,8 @@
 						<v-col>
 							<v-text-field
 								:model-value="targetUser?.name"
+								variant="outlined"
+								label="Όνομα"
 								disabled
 							></v-text-field>
 						</v-col>
@@ -59,6 +67,8 @@
 							<v-text-field
 								v-model="surname"
 								placeholder="Επίθετο"
+								variant="outlined"
+								label="Επίθετο"
 								:disabled="autoImport"
 								required
 							></v-text-field>
@@ -66,29 +76,79 @@
 						<v-col>
 							<v-text-field
 								:model-value="targetUser?.surname"
+								variant="outlined"
+								label="Επίθετο"
 								disabled
 							></v-text-field>
 						</v-col>
 					</v-row>
 					<v-divider class="my-3" thickness="2"/>
-					<v-text-field
-						v-model="adt"
-						placeholder="ΑΔΤ"
-						:disabled="autoImport"
-					></v-text-field>
-					<v-text-field
-						v-model="amka"
-						placeholder="ΑΜΚΑ"
-						:disabled="autoImport"
-					></v-text-field>
-					<v-text-field
-						v-model="afm"
-						placeholder="ΑΦΜ"
-						:disabled="autoImport"
-					></v-text-field>
+					<v-row>
+						<v-col>
+							<v-text-field
+								v-model="adt"
+								placeholder="ΑΔΤ"
+								variant="outlined"
+								label="ΑΔΤ"
+								:disabled="autoImport"
+							></v-text-field>
+						</v-col>
+						<v-col>
+							<v-text-field
+								v-model="amka"
+								placeholder="ΑΜΚΑ"
+								variant="outlined"
+								label="ΑΜΚΑ"
+								:disabled="autoImport"
+							></v-text-field>
+						</v-col>
+						<v-col>
+							<v-text-field
+								v-model="afm"
+								placeholder="ΑΦΜ"
+								variant="outlined"
+								label="ΑΦΜ"
+								:disabled="autoImport"
+							></v-text-field>
+						</v-col>
+					</v-row>
+					<v-row>
+						<v-col>
+							<v-text-field
+								v-model="phone"
+								placeholder="Τηλέφωνο Επικοινωνίας"
+								variant="outlined"
+								label="Τηλέφωνο Επικοινωνίας"
+							></v-text-field>
+						</v-col>
+						<v-col>
+							<v-menu v-model="menu" :close-on-content-click="false">
+								<template v-slot:activator="{ props }">
+									<v-text-field
+										v-bind="props"
+										:model-value="dateOfBirth?.format('DD / MM / YYYY')"
+										placeholder="Ημερομηνίας Γέννησης"
+										variant="outlined"
+										label="Ημερομηνίας Γέννησης"
+										append-inner-icon="mdi-calendar"
+										hide-details
+										readonly
+									></v-text-field>
+								</template>
+								<v-date-picker
+									v-model="dateOfBirth"
+									hide-header
+									@update:model-value="(date) => menu = false">
+								></v-date-picker>
+							</v-menu>
+						</v-col>
+					</v-row>
+
 					<v-textarea
 						v-model="additionalInfo"
+						variant="outlined"
 						placeholder="Επιπλέον πληροφορίες"
+						label="Επιπλέον πληροφορίες"
 					></v-textarea>
 
 					<v-checkbox
@@ -123,10 +183,13 @@
 				</v-form>
 			</v-card-text>
 		</v-card>
+		<v-skeleton-loader v-if="loading" type="card"/>
 	</v-container>
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
 	name: "ContactFormPage",
 
@@ -143,13 +206,16 @@ export default {
 			afm: null,
 			dateOfBirth: null,
 			childAge: null,
+			phone: null,
 
 			autoImport: false,
+			menu: false,
 			valid: false,
 			emailRules: [
 				(v) => !!v || 'Email is required',
 				(v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-			]
+			],
+			loading: false
 		}
 	},
 
@@ -159,7 +225,7 @@ export default {
 		},
 
 		userExtended() {
-			return this.$store.getters.loggedUser();
+			return this.$store.getters.loggedUserExtended();
 		},
 
 		targetID() {
@@ -196,8 +262,8 @@ export default {
 			this.targetUser = users.find(u => u.id === this.targetID);
 		},
 
-		async loadLoggedUserExtended() {
-			await this.$store.dispatch("getUserExtended", this.user.id);
+		loadLoggedUserExtended() {
+			return this.$store.dispatch("getUserExtended", this.user.id);
 		}
 	},
 
@@ -206,20 +272,41 @@ export default {
 			this.autoImport = true;
 		}
 
+		this.loadLoggedUserExtended()
+			.then(() => this.loading = false);
 		this.loadTargetUser();
-		this.loadLoggedUserExtended();
 	},
 
 	watch: {
 		autoImport(checked) {
 			if (checked) {
+				this.email = this.user?.email;
+				this.name = this.user?.name;
+				this.surname = this.user?.surname;
+
+				this.adt = this.userExtended?.adt;
+				this.amka = this.userExtended?.amka;
+				this.afm = this.userExtended?.afm;
+				this.dateOfBirth = moment(this.userExtended?.date_of_birth);
+				this.phone = this.userExtended?.phone;
+			}
+		},
+
+		user(val, prev) {
+			if (val && !prev) {
 				this.email = this.user.email;
 				this.name = this.user.name;
 				this.surname = this.user.surname;
+			}
+		},
 
+		userExtended(curr, prev) {
+			if (curr && !prev) {
 				this.adt = this.userExtended.adt;
 				this.amka = this.userExtended.amka;
 				this.afm = this.userExtended.afm;
+				this.dateOfBirth = moment(this.userExtended.date_of_birth);
+				this.phone = this.userExtended.phone;
 			}
 		}
 	}
