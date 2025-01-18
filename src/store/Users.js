@@ -3,6 +3,7 @@ import UsersApi from "@/services/Users"
 export default {
 	state: {
 		loggedUser: null,
+		loggedUserExtended: null,
 		users: null,
 		filteredUsers: null
 	},
@@ -28,6 +29,10 @@ export default {
 			return state.loggedUser;
 		},
 
+		loggedUserExtended: (state) => () => {
+			return state.loggedUserExtended;
+		},
+
 		loggedUserID: (state) => () => {
 			return state.loggedUser?.id;
 		}
@@ -44,6 +49,10 @@ export default {
 
 		setLoggedUser(state, user) {
 			state.loggedUser = user;
+		},
+
+		setLoggedUserExtended(state, user) {
+			state.loggedUser = user;
 		}
 	},
 
@@ -54,6 +63,13 @@ export default {
 					commit("setUsers", res.data);
 					commit("setFilteredUsers", res.data);
 				});
+		},
+
+		getUserExtended({ commit }, userID) {
+			return UsersApi.getUserExtendedByID(userID)
+				.then(res => {
+					commit("setLoggedUserExtended", res.data);
+				})
 		},
 		
 		getUsersWithFilters({ commit }, filters) {
