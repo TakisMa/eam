@@ -5,6 +5,7 @@
 				:append-icon="centralButtonOptions.icon"
 				:text="centralButtonOptions.title"
 				:color="centralButtonOptions.color"
+				@click="centralButtonOptions.action"
 				width="464" height="165"
 			/>
 		</v-row>
