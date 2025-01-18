@@ -29,7 +29,6 @@
 								variant="outlined"
 								label="E-mail"
 								:rules="emailRules"
-								:disabled="autoImport"
 								required
 							></v-text-field>
 						</v-col>
@@ -139,7 +138,8 @@
 									v-model="dateOfBirth"
 									hide-header
 									@update:model-value="(date) => menu = false">
-								></v-date-picker>
+									>
+								</v-date-picker>
 							</v-menu>
 						</v-col>
 					</v-row>
@@ -232,8 +232,16 @@ export default {
 			return parseInt(this.$route.params.targetID);
 		},
 
+		continueFromDraft() {
+			return this.$route.params.continueFromDraft;
+		},
+
 		isLoggedIn() {
 			return this.$store.getters.isLoggedIn();
+		},
+
+		draft() {
+			return this.$store.getters.getDraft();
 		}
 	},
 
@@ -248,11 +256,16 @@ export default {
 			this.$store.dispatch("saveDraft", {
 				userID: this.user.id,
 				draft: {
+					targetUserID: this.targetUser.id,
 					email: this.email,
 					name: this.name,
 					surname: this.surname,
 					additionalInfo: this.additionalInfo,
-					targetUserID: this.targetUser.id
+					adt: this.adt,
+					amka: this.amka,
+					afm: this.afm,
+					dateOfBirth: this.date_of_birth,
+					phone: this.phone
 				}
 			})
 		},
@@ -264,17 +277,33 @@ export default {
 
 		loadLoggedUserExtended() {
 			return this.$store.dispatch("getUserExtended", this.user.id);
+		},
+
+		loadFromDraft() {
+			this.email = this.draft?.email;
+			this.name = this.draft?.name;
+			this.surname = this.draft?.surname;
+
+			this.adt = this.draft?.adt;
+			this.amka = this.draft?.amka;
+			this.afm = this.draft?.afm;
+			this.dateOfBirth = moment(this.draft?.date_of_birth);
+			this.phone = this.draft?.phone;
+
+			this.autoImport = true;
 		}
 	},
 
 	mounted() {
-		if (this.isLoggedIn) {
+		if (this.continueFromDraft) {
+			this.loadFromDraft();
+		}
+		else if (this.isLoggedIn) {
 			this.autoImport = true;
 		}
-
+		this.loadTargetUser();
 		this.loadLoggedUserExtended()
 			.then(() => this.loading = false);
-		this.loadTargetUser();
 	},
 
 	watch: {

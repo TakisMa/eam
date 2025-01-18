@@ -158,14 +158,20 @@ export default {
 			}
 		},
 
-		async loadDraft() {
+		loadDraft() {
 			if (!this.$store.getters.getDraft()) {
-				await this.$store.dispatch("getDraft", this.userID);
+				this.$store.dispatch("getDraft", this.userID);
 			}
 		},
 
 		continueContactFormFromDraft() {
-
+			this.$router.push({
+				name: "contactForm",
+				params: {
+					targetID: this.draft?.targetUserID,
+					continueFromDraft: true
+				}
+			})
 		}
 	},
 

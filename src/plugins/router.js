@@ -38,7 +38,7 @@ const routes = [
 		meta: { breadcrumb: "Login" }
 	},
 	{
-		path: '/contact?:targetID',
+		path: '/contact?:targetID&:continueFromDraft',
 		name: 'contactForm',
 		component: ContactFormPage,
 		meta: { breadcrumb: "Contact Form" }
