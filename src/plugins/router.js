@@ -5,6 +5,7 @@ import Profile from "@/components/Profile.vue";
 import HelpPage from "@/components/HelpPage.vue";
 import LoginPage from "@/components/LoginPage.vue";
 import ContactFormPage from "@/components/ContactFormPage.vue";
+import PreviewContactForm from "@/components/PreviewContactForm.vue";
 
 const routes = [
 	{
@@ -42,6 +43,12 @@ const routes = [
 		name: 'contactForm',
 		component: ContactFormPage,
 		meta: { breadcrumb: "Contact Form" }
+	},
+	{
+		path: '/preview',
+		name: 'preview',
+		component: PreviewContactForm,
+		meta: { breadcrumb: "Preview" }
 	}
 ]
 

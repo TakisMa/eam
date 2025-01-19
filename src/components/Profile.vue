@@ -84,7 +84,7 @@
 							<v-btn v-if="!contactFormStatusButtonOptions?.hideButton"
 								:color="contactFormStatusButtonOptions.color"
 								:text="contactFormStatusButtonOptions.text"
-								@click="continueContactFormFromDraft"
+								@click="contactFormStatusButtonOptions.action"
 							/>
 						</div>
 					</v-expansion-panel-text>
@@ -136,7 +136,50 @@ export default {
 		},
 
 		document() {
-			return this.$store.getters.get
+			return this.$store.getters.getFinalizedContact();
+		},
+
+		contactFormStatus() {
+			if (this.draft) {
+				return ContactFormStatusTypes.Processing;
+			}
+			else if (this.document) {
+				return ContactFormStatusTypes.Completed;
+			}
+			else {
+				return ContactFormStatusTypes.Error;
+			}
+		},
+
+		contactFormStatusMessage() {
+			if (this.contactFormStatus === ContactFormStatusTypes.Processing) {
+				return "Συνέχεια συμπλήρωσης φόρμας επικοινωνίας"
+			}
+			else if (this.contactFormStatus === ContactFormStatusTypes.Completed) {
+				return "Προβολή αίτησης";
+			}
+		},
+
+		contactFormStatusButtonOptions() {
+			if (this.contactFormStatus === ContactFormStatusTypes.Processing) {
+				return {
+					text: "Συνέχεια",
+					color: "#ef9f0f",
+					action: this.continueContactFormFromDraft
+				}
+			}
+			else if (this.contactFormStatus === ContactFormStatusTypes.Completed) {
+				return {
+					text: "Προβολή",
+					color: "#3f8747",
+					action: this.previewFinalizedContact
+				}
+			}
+			else {
+				return {
+					hideButton: true
+				}
+			}
 		}
 	},
 
@@ -146,9 +189,9 @@ export default {
 			this.generalInfoEditable = !this.generalInfoEditable;
 		},
 
-		async loadUser() {
+		loadUser() {
 			if (!this.$store.getters.getUsers()) {
-				await this.$store.dispatch("getUserByID", this.userID)
+				this.$store.dispatch("getUserByID", this.userID)
 						  .then(user => {
 							  if (user) {
 								  this.user = user;
@@ -169,6 +212,12 @@ export default {
 			}
 		},
 
+		loadFinalizedContact() {
+			if (!this.$store.getters.getDraft()) {
+				this.$store.dispatch("getFinalizedContact", this.userID);
+			}
+		},
+
 		continueContactFormFromDraft() {
 			this.$router.push({
 				name: "contactForm",
@@ -177,12 +226,29 @@ export default {
 					continueFromDraft: true
 				}
 			})
+		},
+
+		previewFinalizedContact() {
+			this.$router.push({ name: "preview" });
 		}
 	},
 
 	mounted() {
 		this.loadUser();
 		this.loadDraft();
+		this.loadFinalizedContact();
+	},
+
+	watch: {
+		contactFormStatus(val) {
+			if (val === ContactFormStatusTypes.Error) {
+				this.$store.commit("setAlert", {
+					open: true,
+					type: "error",
+					text: "Πρόβλημα κατά την φόρτωση των ενεργών συνεργασιών και ραντεβού./\nΠαρακαλώ ανανεώστε τη σελίδα και αν το πρόβλημα εξακολουθήσει, αποσυνδεθείτε και συνδεθείτε εκ νέου"
+				})
+			}
+		}
 	}
 }
 </script>
