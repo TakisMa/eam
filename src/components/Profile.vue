@@ -14,7 +14,7 @@
 							Γενικη Περιγραφη
 						</h3>
 						<v-spacer/>
-						<v-icon id="generalInfo"
+						<v-icon v-if="isMyProfile"
 							:icon="generalInfoEditable ? 'mdi-check' : 'mdi-pencil'"
 							@click.native.stop="handleEditClick(EditableFieldTypes.General)"/>
 					</v-expansion-panel-title>
@@ -33,7 +33,8 @@
 							Περιορισμοί/ Προϋποθέσεις
 						</h3>
 						<v-spacer/>
-						<v-icon icon="mdi-pencil" @click.native.stop="handleEditClick(EditableFieldTypes.Condition)"/>
+						<v-icon v-if="isMyProfile"
+							icon="mdi-pencil" @click.native.stop="handleEditClick(EditableFieldTypes.Condition)"/>
 					</v-expansion-panel-title>
 
 					<v-expansion-panel-text class="px-2">
@@ -48,7 +49,8 @@
 							Στοιχεία Επικοινωνίας
 						</h3>
 						<v-spacer/>
-						<v-icon icon="mdi-pencil" @click.native.stop="handleEditClick(EditableFieldTypes.Contact)"/>
+						<v-icon v-if="isMyProfile"
+							icon="mdi-pencil" @click.native.stop="handleEditClick(EditableFieldTypes.Contact)"/>
 					</v-expansion-panel-title>
 
 					<v-expansion-panel-text class="px-2">
@@ -62,7 +64,7 @@
 							Προσωπικά Στοιχεία
 						</h3>
 						<v-spacer/>
-						<v-icon
+						<v-icon v-if="isMyProfile"
 							:icon="personal.editable ? 'mdi-check' : 'mdi-pencil'"
 							@click.native.stop="handleEditClick(EditableFieldTypes.Personal)"
 						></v-icon>
@@ -246,13 +248,6 @@
 									</v-col>
 									<v-col cols="4">
 										<div> {{ prevUser.email }}</div>
-									</v-col>
-									<v-col class="d-flex justify-end">
-										<v-btn
-											text="Προβολή προφίλ"
-											color="primary"
-											@click="toProfile(prevUser.id)"
-										></v-btn>
 									</v-col>
 								</v-row>
 							</v-card-text>
@@ -516,13 +511,6 @@ export default {
 			this.$store.commit("setUserProfile", this.personal.tempForm);
 			// this.user = {...this.personal.tempForm};
 			this.personal.editable = false;
-		},
-
-		toProfile(id) {
-			this.$router.push({
-				name: "profile",
-				params: {id}
-			});
 		}
 	},
 
