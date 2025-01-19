@@ -25,5 +25,17 @@ export default {
 		return axios.post("http://localhost:3000/login", {
 			params: { credentials }
 		})
+	},
+
+	updateUserInfo(user, userExtended) {
+		return axios.patch("http://localhost:3000/user", {
+			params: { user }
+		})
+	},
+
+	updateUserExtendedInfo(userExtended) {
+		return axios.patch("http://localhost:3000/user/extended", {
+			params: { userExtended }
+		})
 	}
 }

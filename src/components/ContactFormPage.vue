@@ -331,7 +331,8 @@ export default {
 		},
 
 		loadLoggedUserExtended() {
-			return this.$store.dispatch("getUserExtended", this.user.id);
+			return this.$store.dispatch("getUserExtended", this.user.id)
+				.then(user => this.$store.commit("setLoggedUserExtended", user))
 		},
 
 		loadFromDraft() {

@@ -5,7 +5,8 @@ export default {
 		loggedUser: null,
 		loggedUserExtended: null,
 		users: null,
-		filteredUsers: null
+		filteredUsers: null,
+		userProfile: null
 	},
 
 	getters: {
@@ -35,6 +36,10 @@ export default {
 
 		loggedUserID: (state) => () => {
 			return state.loggedUser?.id;
+		},
+
+		getUserProfile: (state) => () => {
+			return state.userProfile;
 		}
 	},
 
@@ -48,11 +53,15 @@ export default {
 		},
 
 		setLoggedUser(state, user) {
-			state.loggedUser = user;
+			state.loggedUser = {...state.loggedUser, ...user};
 		},
 
 		setLoggedUserExtended(state, user) {
-			state.loggedUserExtended = user;
+			state.loggedUserExtended = {...state.loggedUserExtended, ...user};
+		},
+
+		setUserProfile(state, user) {
+			state.userProfile = {...state.userProfile, ...user};
 		}
 	},
 
@@ -62,14 +71,13 @@ export default {
 				.then(res => {
 					commit("setUsers", res.data);
 					commit("setFilteredUsers", res.data);
+					return res.data;
 				});
 		},
 
 		getUserExtended({ commit }, userID) {
 			return UsersApi.getUserExtendedByID(userID)
-				.then(res => {
-					commit("setLoggedUserExtended", res.data);
-				})
+				.then(res => res.data);
 		},
 		
 		getUsersWithFilters({ commit }, filters) {
@@ -92,13 +100,23 @@ export default {
 				});
 		},
 
-		userLogout({ commit } ) {
-			commit("setLoggedUser", null);
+		userLogout(state) {
+			state.loggedUser = null;
 			localStorage.removeItem("user");
 		},
 
 		resetFilteredUsers({ getters, commit }) {
 			commit("setFilteredUsers", getters.getUsers());
+		},
+
+		updateUserInfo({ commit }, userInfo) {
+			return UsersApi.updateUserInfo(userInfo)
+				.then(res => commit("setLoggedUser", res.data));
+		},
+
+		updateUserExtendedInfo({ commit }, userInfoExtended) {
+			return UsersApi.updateUserExtendedInfo(userInfoExtended)
+				.then(res => commit("setLoggedUserExtended", res.data));
 		}
 	}
 }
