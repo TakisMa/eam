@@ -1,14 +1,4 @@
 <template>
-	<div class="d-flex justify-center">
-		<v-alert
-			v-model="alert.open"
-			:text="alert.text"
-			:type="alert.type"
-			closable
-			prominent
-			max-width="530"
-		></v-alert>
-	</div>
 	<v-container class="d-flex justify-center">
 		<v-card width="530">
 			<v-card-item>
@@ -229,11 +219,6 @@ export default {
 
 			autoImport: false,
 			menu: false,
-			alert: {
-				open: false,
-				type: null,
-				text: null
-			},
 			valid: false,
 			emailRules: [
 				(v) => !!v || 'Email is required',
@@ -289,19 +274,19 @@ export default {
 					})
 					.then(res => {
 						if (res.status === 200) {
-							this.alert = {
+							this.$store.commit("setAlert", {
 								open: true,
 								type: "success",
 								text: "Επιτυχής υποβολή αίτησης!"
-							}
+							});
 							this.$store.dispatch("clearDraft", {userID: this.user.id})
 								.then(res => {
 									if (res.status !== 200) {
-										this.alert = {
+										this.$store.commit("setAlert", {
 											open: true,
 											type: "error",
 											text: "Προέκυψε κάποιο πρόβλημα κατά την υποβολή της αίτησης!"
-										}
+										});
 									}
 									else {
 										this.$router.push({
@@ -312,11 +297,11 @@ export default {
 								});
 						}
 						else {
-							this.alert = {
+							this.$store.commit("setAlert", {
 								open: true,
 								type: "error",
 								text: "Προέκυψε κάποιο πρόβλημα κατά την υποβολή της αίτησης!"
-							}
+							});
 						}
 					});
 			}

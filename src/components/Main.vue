@@ -1,6 +1,13 @@
 <template>
 	<v-container>
 		<v-main>
+			<v-alert
+				v-model="alert.open"
+				:type="alert.type"
+				:text="alert.text"
+				prominent
+				closable
+			></v-alert>
 			<Breadcrumb />
 			<RouterView />
 		</v-main>
@@ -13,7 +20,14 @@ import HomePage from "@/components/HomePage.vue";
 
 export default {
 	name: "Main",
-	components: {HomePage, Breadcrumb}
+
+	components: {HomePage, Breadcrumb},
+
+	computed: {
+		alert() {
+			return this.$store.getters.getAlert();
+		}
+	}
 }
 </script>
 

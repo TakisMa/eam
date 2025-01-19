@@ -78,12 +78,12 @@
 
 						<div class="d-flex flex-row px-2">
 							<p class="d-flex align-center">
-								Συνέχεια συμπλήρωσης φόρμας επικοινωνίας
+								{{ contactFormStatusMessage }}
 							</p>
 							<v-spacer/>
-							<v-btn
-								color="primary"
-								text="Συμπλήρωση"
+							<v-btn v-if="!contactFormStatusButtonOptions?.hideButton"
+								:color="contactFormStatusButtonOptions.color"
+								:text="contactFormStatusButtonOptions.text"
 								@click="continueContactFormFromDraft"
 							/>
 						</div>
@@ -109,11 +109,7 @@
 </template>
 
 <script>
-const messages = [
-	"Συνέχεια συμπλήρωσης φόρμας επικοινωνίας",
-	"Προβολή αίτησης",
-	"Ακύρωση αίτησης"
-]
+import ContactFormStatusTypes from "@/enums/ContactFormStatusTypes.js";
 
 export default {
 	name: "Profile",
