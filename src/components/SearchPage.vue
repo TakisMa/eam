@@ -190,7 +190,7 @@ export default {
 				this.$store.commit("setFilteredUsers", users);
 			}
 			else {
-				this.$store.commit("setFilteredUsers", this.users);
+				this.$store.dispatch("resetFilteredUsers");
 			}
 		},
 
