@@ -179,7 +179,7 @@ export default {
 		},
 
 		searchUsers(filters) {
-			if (filters.locations.length || filters.childAge || filters.workingTime || filters.education) {
+			if (filters.locations?.length || filters.childAge || filters.workingTime || filters.education) {
 				const users = this.users.filter(user => {
 					return filters.locations?.includes(user.location_id) ||
 						   filters.childAge === user.childAge ||
