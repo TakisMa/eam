@@ -179,15 +179,19 @@ export default {
 		},
 
 		searchUsers(filters) {
-			const users = this.users.filter(user => {
-				return filters.locations.some(user.location_id) ||
-					   filters.childAge === user.childAge ||
-					   filters.workingTime === user.workingTime ||
-					   filters.education === user.education
-			});
+			if (filters.locations.length || filters.childAge || filters.workingTime || filters.education) {
+				const users = this.users.filter(user => {
+					return filters.locations?.includes(user.location_id) ||
+						   filters.childAge === user.childAge ||
+						   filters.workingTime === user.workingTime ||
+						   filters.education === user.education
+				});
 
-			this.$store.commit("setFilteredUsers", users);
-			// this.$store.dispatch("getUsersWithFilters", filters);
+				this.$store.commit("setFilteredUsers", users);
+			}
+			else {
+				this.$store.commit("setFilteredUsers", this.users);
+			}
 		},
 
 		contactProf(targetID) {

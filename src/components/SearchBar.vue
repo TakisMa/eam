@@ -131,7 +131,8 @@ export default {
 			this.$emit("searchUsers", {
 				locations: this.locations,
 				childAge: this.childAge,
-				workingTime: this.previousExperience,
+				previousExperience: this.previousExperience,
+				workingTime: this.workingTime,
 				education: this.education
 			});
 		},
