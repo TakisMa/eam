@@ -6,6 +6,9 @@
 			</v-btn>
 		</template>
 		<v-spacer/>
+		<v-btn color="secondary" @click="toSearch">
+			Αναζήτηση
+		</v-btn>
 		<v-btn color="secondary">
 			Ανακοινώσεις
 		</v-btn>
@@ -46,6 +49,10 @@ export default {
 				name: "profile",
 				params: { id: this.$store.getters.loggedUserID()}
 			});
+		},
+
+		toSearch() {
+			this.$router.push({ name: "searchPage" });
 		},
 
 		toHelp() {

@@ -66,7 +66,7 @@ export default {
 					title: "Λήψη Voucher",
 					icon: "mdi-currency-usd",
 					enabled: this.isLoggedIn,
-					color: this.isLoggedIn ? "#faefc0" : "#CFF7D3"
+					color: this.isLoggedIn ? "#faefc0" : "#CFF7D3",
 				},
 				lowerRightButton: {
 					title: "Πληροφορίες Συνοδών",

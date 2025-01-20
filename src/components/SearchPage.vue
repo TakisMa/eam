@@ -24,22 +24,22 @@
 						<v-col cols="5">
 							<v-list>
 								<v-list-item>
-									{{ user.name }}
+									<b>Όνομα:</b> {{ user.name }}
 								</v-list-item>
 								<v-list-item>
-									{{ user.surname }}
+									<b> Επίθετο: </b> {{ user.surname }}
 								</v-list-item>
 								<v-list-item>
-									{{ user.location }}
+									<b> Περιοχή: </b> {{ user.location }}
 								</v-list-item>
 								<v-list-item>
-									{{ user.workingTime }}
+									<b> Ωράριο απασχόλησης: </b> {{ user.workingTime }}
 								</v-list-item>
 								<v-list-item>
-									{{ user.education }}
+									<b> Επίπεδο εκπαίδευσης: </b> {{ user.education }}
 								</v-list-item>
 								<v-list-item v-if="user.additionalInfo">
-									{{ user.additionalInfo.description }}
+									<b> Λίγα λόγια: </b> {{ user.additionalInfo.description }}
 								</v-list-item>
 							</v-list>
 						</v-col>
