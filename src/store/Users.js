@@ -62,6 +62,12 @@ export default {
 
 		setUserProfile(state, user) {
 			state.userProfile = {...state.userProfile, ...user};
+		},
+
+		clearUser(state) {
+			state.loggedUser = null;
+			state.loggedUserExtended = null;
+			state.userProfile = null;
 		}
 	},
 
@@ -100,8 +106,8 @@ export default {
 				});
 		},
 
-		userLogout(state) {
-			state.loggedUser = null;
+		userLogout({ commit }) {
+			commit("clearUser");
 			localStorage.removeItem("user");
 		},
 
