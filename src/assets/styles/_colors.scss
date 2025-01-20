@@ -1,33 +1,7 @@
-// Brand
-$ihm-red: #c6002b;
-$ihm-red--dark: #ff513c;
-$ihm-red2: #e22100;
-$ihm-red-error: #e22c3a;
-$ihm-red-warning: $ihm-red;
-$ihm-red-warning-background: transparentize($ihm-red-warning, 0.8);
-$ihm-warning: $ihm-red;
-$ihm-warning1: #f0959c;
-$ihm-black: #0a0b09;
-$ihm-green: #62aa7b;
-$ihm-green--dark: #3DB868;
-$ihm-grey: #808080;
-$ihm-grey-2: #999999;
-$ihm-grey--dark: #c8cdd0;
-$ihm-grey1: #f7f7f7;
-$ihm-grey2: #e6eaed;
-$ihm-pink: #fd375a;
-$ihm-pink2: #fdeaec;
-$ihm-white: #ffffff;
-$ihm-blue: #288bd3;
-$ihm-blue--dark: #00c0fa;
-$ihm-blue1: #003475;
-$ihm-blue2: #3c4063;
-$ihm-purple: #3f51b5;
-$ihm-yellow: #f8e71c;
-$ihm-yellow-warning: #f7ce03;
-$ihm-yellow-warning-background: transparentize($ihm-yellow-warning, 0.8);
-$ihm-orange: #fc833e;
-$ihm-orange1: #e86317;
+$black: #0a0b09;
+$grey1: #f7f7f7;
+$white: #ffffff;
+$blue1: #003475;
 
 
 // Text
@@ -44,24 +18,5 @@ $grey-150: #edf1f3;
 $grey-100: #f6f8f9;
 
 // Background
-$background: $ihm-grey1;
-$background--dark: $grey-500;
-$topbar-background: $ihm-blue1;
-$topbar-background--dark: #000000;
-
-// Live Status
-$status-neutral: #717277;
-$status-connected: $ihm-red;
-$status-warning: #e8c205;
-$status-error: #e86317;
-
-// Interactive    //todo
-$interactive-error: $ihm-red-error;     //todo
-$interactive-caution: $ihm-yellow-warning; //todo
-$interactive-compete: $ihm-green; //todo
-$interactive-active: $ihm-blue; //todo
-
-// Table
-$table-line: $grey-250;   //Used as hotkeys borders
-$table-row-background: #e6f2fa; //used in Hour Selection component
-$table-row-background--dark: rgba(27, 138, 171, 0.34); //used in Hour Selection component
+$background: $grey1;
+$topbar-background: $blue1;

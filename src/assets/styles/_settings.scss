@@ -1,12 +1,10 @@
-@use "colors";
-
 $font-family: "Open Sans", sans-serif;
 
 @use "vuetify/settings" with (
   $body-font-family: $font-family,
   $heading-font-family: $font-family,
 
-  $app-bar-background: colors.$ihm-blue1,
+  $app-bar-background: #003475FF,
 
   $border-radius-root: 6px,
 
@@ -19,7 +17,6 @@ $font-family: "Open Sans", sans-serif;
   $button-text-transform: capitalize,
 
   // Form Fields
-  $field-color: colors.$grey-600,
   $field-font-size: 12px,
   $field-control-affixed-padding: 6px,
 
@@ -60,8 +57,6 @@ $font-family: "Open Sans", sans-serif;
   $list-item-icon-opacity: 1,
 
   $progress-circular-intermediate-svg-transition: all 0.6s ease-in-out,
-
-  $overlay-scrim-background: colors.$ihm-grey,
 
   $typography: (
         (

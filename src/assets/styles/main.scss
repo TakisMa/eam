@@ -19,22 +19,14 @@ html {
     > .v-list-subheader {
       color: $grey-600;
       font-weight: 700;
-
-      &.v-theme--dark {
-        color: $ihm-white
-      }
     }
   }
 }
 
 .v-btn {
   &.v-btn--has-bg {
-    &.v-theme--dark {
-      background-color: $grey-500;
-    }
-
     &.v-btn--disabled {
-      background-color: rgba($ihm-black, 0.12) !important;
+      background-color: rgba($black, 0.12) !important;
     }
   }
 }
@@ -76,16 +68,6 @@ label {
   }
 }
 
-// Playlist Clock Scrollbar
-#playlist-clock.ps {
-  width: 24px;
-  margin-right: 2px;
-
-  .ps__rail-y {
-    visibility: hidden;
-  }
-}
-
 .v-toolbar.v-app-bar {
   .v-img__img {
     position: relative;
@@ -102,17 +84,11 @@ label {
   }
 
   .v-icon {
-    color: $ihm-white;
+    color: $white;
   }
 }
 
 .v-toolbar {
-  &.v-app-bar {
-    &.v-theme--dark {
-      background-color: $topbar-background--dark;
-    }
-  }
-
   &:not(.v-app-bar) {
     border-bottom: 2px solid $grey-200 !important;
 
@@ -136,10 +112,6 @@ label {
 
     .v-toolbar__extension {
       padding: 0 12px;
-    }
-
-    &.v-theme--dark .v-toolbar__content .v-toolbar__title {
-      color: $ihm-white;
     }
 
     &.v-toolbar--extended {
@@ -221,10 +193,6 @@ label {
       &.v-theme--light {
         background: $grey-200;
       }
-
-      &.v-theme--dark {
-        background: $grey-500;
-      }
     }
   }
 
@@ -237,282 +205,7 @@ label {
 }
 
 .tooltip {
-  background: $ihm-white;
+  background: $white;
   color: $grey-400;
   opacity: 1 !important;
-}
-
-.wavesurfer-region {
-  > .wavesurfer-handle {
-    background-color: $ihm-blue1 !important;
-    width: 5px !important;
-  }
-}
-
-.song-details-popup {
-  .v-list-item {
-    min-height: 20px !important;
-
-    .v-list-item__content {
-      padding: 2px 0;
-    }
-  }
-}
-
-// Alerts
-.notifications-container {
-  contain: initial;
-  overflow: visible;
-
-  &:before {
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 15px solid $ihm-white;
-    content: "";
-    right: -16px;
-    top: 15px;
-    transform: rotate(90deg);
-    position: absolute;
-  }
-
-  &.v-theme--dark:before {
-    border-bottom-color: $grey-600;
-  }
-
-  .ps {
-    &.scrollable {
-      max-height: 366px;
-    }
-
-    &:not(.scrollable) {
-      overflow: visible !important;
-
-      .ps__rail-y {
-        display: none;
-      }
-    }
-  }
-
-  .v-alert {
-    .v-alert__content {
-      color: $grey-600;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .v-alert__append {
-      .v-btn {
-        color: $grey-600;
-        font-size: 14px;
-      }
-    }
-  }
-
-  .v-list {
-    border-radius: 6px;
-    overflow: hidden;
-
-    .v-list-item {
-      height: 60px;
-      padding: 0 8px 0 0 !important;
-
-      .v-list-item__prepend {
-        align-self: stretch;
-        justify-content: center;
-        padding-left: 8px;
-        width: 36px;
-
-        .v-icon {
-          margin: 0 !important;
-        }
-      }
-
-      &.error {
-        .v-list-item__prepend {
-          background-color: $ihm-pink2;
-
-          .v-icon {
-            color: $interactive-error;
-          }
-        }
-      }
-
-      &.info {
-        .v-list-item__icon:first-child {
-          .v-icon {
-            color: $interactive-active;
-          }
-        }
-      }
-
-      &#see-more-option {
-        height: 40px;
-
-        .v-list-item__content {
-          padding: 0;
-        }
-      }
-    }
-
-    .v-divider {
-      border-color: transparent;
-    }
-  }
-
-  &.error {
-    &:before {
-      border-bottom: 15px solid $ihm-pink2;
-    }
-
-    .v-alert {
-      background-color: $ihm-pink2 !important;
-
-      .v-alert__prepend {
-        .v-icon {
-          color: $interactive-error;
-        }
-      }
-    }
-  }
-
-  &.info {
-    &:before {
-      border-bottom: 15px solid $interactive-active;
-    }
-
-    .v-alert {
-      background-color: $interactive-active !important;
-
-      .v-alert__prepend {
-        .v-icon {
-          color: $interactive-active;
-        }
-      }
-    }
-  }
-}
-
-.v-expansion-panel {
-  transition: none;
-  margin-top: 0;
-
-  &::before {
-    box-shadow: none;
-  }
-
-  &:not(:first-child)::after {
-    border-top: none;
-  }
-
-  > .v-expansion-panel-title {
-    .panel-arrow {
-      transition: transform .3s ease-out;
-    }
-
-    &.v-expansion-panel-title--active {
-      .panel-arrow {
-        transform: rotate(180deg);
-      }
-    }
-  }
-}
-
-// Blink animation
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-@-webkit-keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-.blink {
-  animation: blink .5s step-start 0s infinite;
-  -webkit-animation: blink .5s step-start 0s infinite;
-}
-
-.dragged-playlist {
-  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-}
-
-.dragged-library,
-.dragged-log {
-  background: $ihm-white;
-
-  * {
-    font-size: 13px;
-    font-weight: 700;
-  }
-}
-
-// Radio buttons
-.v-radio {
-  .v-input--selection-controls__input {
-    height: 18px;
-    width: 18px;
-
-    .v-icon {
-      color: $grey-500;
-    }
-  }
-
-  &.v-item--active {
-    .v-icon {
-      color: $interactive-active;
-    }
-  }
-}
-
-// Tabs
-.v-tabs {
-  .v-tab {
-    &.v-tab--selected {
-      color: $ihm-blue;
-      background-color: $table-row-background;
-    }
-
-    &.current {
-      border-left-color: $ihm-blue !important;
-      color: $ihm-blue;
-    }
-
-    &:hover {
-      background-color: $ihm-grey2;
-    }
-
-    &.v-theme--dark {
-      &.v-tab--selected {
-        color: $ihm-blue--dark;
-      }
-
-      &.current {
-        border-left-color: $ihm-blue--dark !important;
-        color: $ihm-blue--dark;
-      }
-
-      &:hover {
-        color: $ihm-blue--dark;
-      }
-    }
-  }
-}
-
-// Tooltips
-.v-tooltip {
-  > .v-overlay__content {
-    background-color: rgba(97, 97, 97, 0.9) !important;
-    color: $ihm-white !important;
-  }
-}
-
-// Snackbar
-.v-snackbar {
-  > .v-overlay__content {
-    color: $ihm-white !important;
-  }
 }
